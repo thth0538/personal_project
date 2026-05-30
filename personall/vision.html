@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch. II — The Vision · Strategic Goals</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 9rem 0 5rem; background: var(--charcoal); position: relative; overflow: hidden; }
+.page-hero::after {
+  content: 'VISION';
+  font-family: 'Cormorant Garamond', serif; font-size: 20rem; font-weight: 300;
+  color: rgba(255,255,255,0.025); position: absolute; bottom: -3rem; right: -1rem;
+  line-height: 1; pointer-events: none; letter-spacing: -0.02em;
+}
+.hero-title { color: var(--cream); }
+.hero-title em { color: var(--accent-light); }
+
+.career-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--sand); border-radius: 3px; overflow: hidden; }
+.cs-item { background: var(--warm-white); padding: 2.75rem 2rem; transition: background .2s; }
+.cs-item:hover { background: var(--cream); }
+.cs-phase { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+.cs-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--charcoal); margin-bottom: 0.85rem; }
+.cs-body { font-size: 0.82rem; color: var(--mid); line-height: 1.72; }
+.cs-badge { display: inline-block; margin-top: 1.1rem; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--beige); color: var(--accent-deep); padding: 0.25rem 0.7rem; border-radius: 20px; }
+
+.goals-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+.goal-card { padding: 2.5rem; border: 1px solid rgba(179,139,109,0.14); border-radius: 3px; transition: transform .3s, box-shadow .3s; }
+.goal-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,40,37,0.07); }
+.goal-n { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--beige); line-height: 1; margin-bottom: 0.25rem; }
+.goal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--charcoal); margin-bottom: 0.7rem; }
+.goal-body { font-family: 'EB Garamond', serif; font-size: 0.96rem; color: var(--mid); line-height: 1.82; }
+
+.model-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4.5rem; align-items: start; }
+.model-card { background: var(--cream); border: 1px solid rgba(179,139,109,0.18); border-radius: 3px; padding: 2.5rem; text-align: center; }
+.model-img-wrap { width: 100%; margin-bottom: 1.5rem; }
+.model-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--charcoal); margin-bottom: 0.2rem; }
+.model-origin { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+.model-body { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--mid); line-height: 1.75; text-align: left; }
+.lesson-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.lesson-list li { font-family: 'EB Garamond', serif; font-size: 1rem; color: var(--mid); line-height: 1.75; display: flex; gap: 0.85rem; }
+.lesson-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+.dark-pull { background: var(--charcoal); padding: 2.5rem 2.75rem; border-radius: 3px; margin-top: 2rem; }
+.dark-pull p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.55; }
+.dark-pull small { display: block; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-top: 1rem; font-style: normal; font-family: 'Jost', sans-serif; }
+</style>
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div><div class="page-veil"></div>
+<!-- ═══════════════════════════════════════════
+     MODAL WELCOME 
+     ═══════════════════════════════════════════ -->
+<style>
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 7000;
+  background: rgba(44,40,37,0.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; animation: overlayIn .5s ease .2s forwards;
+}
+@keyframes overlayIn { to { opacity: 1; } }
+
+.modal-box {
+  background: var(--warm-white);
+  border: 1px solid rgba(179,139,109,0.22);
+  border-radius: 4px;
+  width: 100%; max-width: 640px;
+  max-height: 88vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transform: translateY(28px); opacity: 0;
+  animation: boxIn .55s cubic-bezier(.4,0,.2,1) .35s forwards;
+  box-shadow: 0 32px 80px rgba(44,40,37,0.22);
+}
+@keyframes boxIn { to { transform: translateY(0); opacity: 1; } }
+
+.modal-header {
+  padding: 2rem 2.5rem 1.25rem;
+  border-bottom: 1px solid rgba(179,139,109,0.12);
+  display: flex; align-items: flex-start; gap: 1.25rem;
+}
+.modal-avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  background: var(--beige); overflow: hidden;
+  border: 2px solid rgba(179,139,109,0.25);
+  position: relative;
+}
+.modal-avatar img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.modal-avatar-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--parchment); text-align: center; line-height: 1.4;
+  padding: 4px;
+}
+.modal-header-text {}
+.modal-kicker {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem; font-weight: 500;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; color: var(--charcoal);
+  line-height: 1.35;
+}
+
+.modal-body {
+  padding: 1.75rem 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+.modal-greeting {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.97rem; color: var(--mid); line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.modal-greeting strong { color: var(--charcoal); font-weight: 500; }
+
+.modal-divider {
+  width: 2.5rem; height: 1px;
+  background: var(--parchment); margin: 1.5rem 0;
+}
+
+.modal-map-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 1rem; letter-spacing: 0.04em;
+}
+
+.modal-map {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(179,139,109,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+.modal-map-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid rgba(179,139,109,0.1);
+  text-decoration: none;
+  transition: background .2s;
+}
+.modal-map-row:last-child { border: none; }
+.modal-map-row:hover { background: var(--cream); }
+.modal-map-left {
+  padding: 0.85rem 1rem;
+  background: rgba(179,139,109,0.05);
+  border-right: 1px solid rgba(179,139,109,0.1);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-chapter {
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+}
+.modal-map-page {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; color: var(--charcoal); margin-top: 0.15rem;
+}
+.modal-map-right {
+  padding: 0.85rem 1.1rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-topic {
+  font-size: 0.78rem; color: var(--charcoal); font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+.modal-map-ref {
+  font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+.modal-closing {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem; color: var(--mid); line-height: 1.85;
+  margin-top: 1.25rem; font-style: italic;
+}
+
+.modal-footer {
+  padding: 1.25rem 2.5rem 1.75rem;
+  border-top: 1px solid rgba(179,139,109,0.12);
+  display: flex; justify-content: flex-end;
+}
+.modal-btn {
+  background: var(--charcoal); color: var(--cream);
+  border: none; border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.modal-btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+</style>
+
+<div class="modal-overlay" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <!-- Thay src="" bằng đường dẫn ảnh chân dung của em (100×100px, hình tròn) -->
+        <img src="./assets/welcome_card.png" alt="Thu Hương" width="100" height="100" onerror="this.style.display='none'">
+      </div>
+      <div class="modal-header-text">
+        <p class="modal-kicker">Lời chào từ tác giả</p>
+        <h2 class="modal-title" id="modalTitle">
+          Thu Hương — Hướng dẫn<br>trải nghiệm Website
+        </h2>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p class="modal-greeting">
+        Em chào Thầy <strong>ThS. Hoàng Tuấn Dũng</strong> ạ,
+      </p>
+      <p class="modal-greeting">
+        Lời đầu tiên, em xin cảm ơn Thầy đã dành thời gian ghé thăm và xem qua sản phẩm
+        bài tập cá nhân: <strong>Xây dựng Thương hiệu cá nhân</strong> của em.
+      </p>
+      <p class="modal-greeting">
+        Để phù hợp với dòng chảy câu chuyện và phong cách trình bày của một website cá nhân
+        chuyên nghiệp, em đã sắp xếp lại các câu hỏi trong đề bài thành <strong>6 Chương (Chapter) logic.</strong>
+        Để Thầy thuận tiện hơn trong việc theo dõi và chấm điểm theo đúng lộ trình câu hỏi,
+        em xin phép gửi Thầy bản đồ hướng dẫn đối chiếu dưới đây:
+      </p>
+
+      <div class="modal-divider"></div>
+      <p class="modal-map-title">Bản đồ đối chiếu nội dung</p>
+
+      <div class="modal-map">
+        <a href="index.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Home</span>
+            <span class="modal-map-page">The Origin Story</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Tổng quan & Câu chuyện thương hiệu</span>
+            <span class="modal-map-ref">Câu VI.9</span>
+          </div>
+        </a>
+        <a href="identity.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter I</span>
+            <span class="modal-map-page">The Identity</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đánh giá cá nhân — Inner Compass</span>
+            <span class="modal-map-ref">Câu I.1 đến I.5</span>
+          </div>
+        </a>
+        <a href="vision.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter II</span>
+            <span class="modal-map-page">The Vision</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Mục tiêu thương hiệu — Strategic Goals</span>
+            <span class="modal-map-ref">Câu II.1 đến II.4</span>
+          </div>
+        </a>
+        <a href="strategy.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Ch. III & IV</span>
+            <span class="modal-map-page">The Strategy</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đối tượng mục tiêu & Định vị thương hiệu</span>
+            <span class="modal-map-ref">Câu III.1–III.4 & IV.1–IV.4</span>
+          </div>
+        </a>
+        <a href="presence.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter V</span>
+            <span class="modal-map-page">The Presence</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Nhận diện & Hình ảnh thương hiệu</span>
+            <span class="modal-map-ref">Câu V.1 đến V.4</span>
+          </div>
+        </a>
+        <a href="roadmap.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter VI</span>
+            <span class="modal-map-page">The Roadmap</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Phân tích năng lực & Lộ trình hành động</span>
+            <span class="modal-map-ref">Câu VI.1 đến VI.8</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="modal-closing">
+        Em hy vọng cách trình bày này sẽ mang lại cho Thầy một trải nghiệm mới mẻ
+        và thấy được sự đầu tư nghiêm túc của em đối với bộ môn Quản trị thương hiệu.
+        Em cảm ơn Thầy và chúc Thầy có một ngày làm việc hiệu quả ạ!
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">
+        Đã hiểu — Khám phá ngay
+      </button>
+    </div>
+
+  </div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><em>H.</em> Personal Brand</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="identity.html">Identity</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="presence.html">Presence</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <p class="label fade-up" style="color:var(--accent-light);">Chapter II · The Vision</p>
+        <h1 class="display display-xl hero-title fade-up d2" style="margin-top:1.25rem;">Strategic<br><em>Goals</em></h1>
+      </div>
+      <p class="body-serif fade-up d2" style="max-width:300px; text-align:right; color:rgba(255,255,255,0.4);">
+        Không mơ hồ về mục tiêu. Không làm việc theo cảm hứng.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>Mục tiêu rõ ràng</span><span class="sep">·</span>
+    <span>Làm việc kỷ luật</span><span class="sep">·</span>
+    <span>Tư duy Marketing Executive</span><span class="sep">·</span>
+    <span>Tự chủ tài chính</span><span class="sep">·</span>
+    <span>Quyền năng lựa chọn</span><span class="sep">·</span>
+    <span>Đam mê trong hệ thống</span><span class="sep">·</span>
+    
+    <span>Mục tiêu rõ ràng</span><span class="sep">·</span>
+    <span>Làm việc kỷ luật</span><span class="sep">·</span>
+    <span>Tư duy Marketing Executive</span><span class="sep">·</span>
+    <span>Tự chủ tài chính</span><span class="sep">·</span>
+    <span>Quyền năng lựa chọn</span><span class="sep">·</span>
+    <span>Đam mê trong hệ thống</span><span class="sep">·</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <p class="label fade-up">Lộ trình sự nghiệp</p>
+    <h2 class="display display-md fade-up d1" style="margin: 0.75rem 0 2.5rem;">Từ chuyên viên đến<br><em>người làm chủ hệ thống</em></h2>
+    <div class="career-steps fade-up d2">
+      
+      <div class="cs-item">
+        <p class="cs-phase">Hiện tại · Giai đoạn I</p>
+        <p class="cs-title">Marketing Executive</p>
+        <p class="cs-body">Học cách một hệ thống vận hành từ cốt lõi: hoạch định kế hoạch, kiểm soát chất lượng và đo lường hiệu quả. Đây là giai đoạn tích lũy tư duy tổng thể trước khi quản trị.</p>
+        <span class="cs-badge">Tích lũy tư duy</span>
+      </div>
+
+      <div class="cs-item">
+        <p class="cs-phase">Song song · Giai đoạn II</p>
+        <p class="cs-title">Personal Branding</p>
+        <p class="cs-body">Xây dựng định vị Food Reviewer khác biệt trên TikTok. Đây là bài toán thực tế về việc marketing cho chính mình và làm chủ sức ảnh hưởng cá nhân trên nền tảng số.</p>
+        <span class="cs-badge">Thực thi chiến lược</span>
+      </div>
+
+      <div class="cs-item">
+        <p class="cs-phase">Dài hạn · Mục tiêu cuối</p>
+        <p class="cs-title">Tự vận hành dự án riêng</p>
+        <p class="cs-body">Làm chủ hoàn toàn các quyết định chiến lược và vận hành một hệ thống của riêng mình. Tự do hoạch định giá trị và tạo ra những sản phẩm mang đậm dấu ấn cá nhân.</p>
+        <span class="cs-badge">Đích đến</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div style="padding:0 3.5rem; margin-bottom:7rem;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+    <div class="img-wrap" style="height:480px; border-radius:3px;">
+      <img src="./assets/vision board.png" alt="Vision visual — lên kế hoạch, tư duy chiến lược, bàn làm việc có notebook và coffee" width="760" height="960">
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Vision Board</p>
+        <p class="img-placeholder-size">Đam mê là ngọn đuốc, lý trí là mồi lửa</p>
+        <p class="img-placeholder-label" style="margin-top:0.25rem; max-width:180px; text-align:center;">Planning · Notebook & Coffee · Mindful</p>
+      </div>
+    </div>
+    <div>
+      <p class="label fade-up" style="margin-bottom:1.5rem;">Đam mê & Sự nghiệp</p>
+      <p class="body-serif fade-up d1">
+        Mục tiêu sự nghiệp của mình <strong>không đi theo đam mê một cách cảm tính</strong>. Mình ưu tiên sự tự chủ và nền tảng tài chính vững chắc trước khi mơ về những điều xa vời. Đam mê giúp mình có cảm hứng, nhưng kỷ luật và thực tế mới là thứ mang lại sự bền vững.
+      </p>
+      <div class="pull-quote" style="margin:1.5rem 0;">
+        "Thay vì chạy theo đam mê, mình chọn cách vận hành nó. Nội dung phải có định hướng, có chiến lược rõ ràng và phải tạo ra giá trị thực sự."
+      </div>
+      <p class="body-serif fade-up d2">
+        Đó là sự khác biệt giữa sở thích cá nhân và việc <strong>xây dựng một thương hiệu Food Reviewer có hệ thống</strong>. Với mình, đam mê cần được đặt vào một bộ khung quản trị để có thể phát triển lâu dài và mang lại những giá trị xứng đáng.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="section-alt">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">Hình mẫu truyền cảm hứng</p>
+    <div class="model-grid fade-up d1">
+      <div class="model-card">
+        <div class="model-img-wrap">
+          <div class="img-wrap" style="height:220px; border-radius:2px;">
+            <img src="./assets/vison_model.png" alt="Hình mẫu Hạ Hiểu Lan — Xin chào 1984" width="280" height="440" >
+          </div>
+        </div>
+        <p class="model-name">Hạ Hiểu Lan</p>
+        <p class="model-origin">Xin Chào 1984 · Chinese Drama 2026</p>
+        <div style="width:2rem; height:1px; background:var(--accent-light); margin:1rem auto;"></div>
+        <p class="model-body">Một hình mẫu rõ ràng về mục tiêu, quyết liệt trong hành động và luôn làm chủ mọi quyết định. Mọi nỗ lực đều hướng đến khả năng tự bảo vệ bản thân và xác lập quyền tự do lựa chọn.</p>
+      </div>
+      <div>
+        <h3 class="display display-md fade-up" style="margin-bottom:1.5rem;">Điều mình học được<br>từ hình mẫu này</h3>
+        <ul class="lesson-list fade-up d1">
+          <li>Sự rõ ràng về mục tiêu chính là sức mạnh. Mình học cách thành thật với mong muốn cá nhân để biến chúng thành động lực thực thi mạnh mẽ nhất.</li>
+          <li>Tư duy tài chính thực tế xuất phát từ nhu cầu tự chủ. Chỉ khi làm chủ được tài chính, mình mới thực sự có quyền quyết định cách mình sống.</li>
+          <li>Thay thế cảm hứng nhất thời bằng sự kỷ luật và hành động thực tế. Mỗi bước đi đều cần có lý do rõ ràng và tính toán kỹ lưỡng.</li>
+          <li>Luôn đặt câu hỏi cho mọi hành động: Kết quả cuối cùng là gì, và bước tiếp theo sẽ dẫn mình đến đâu?</li>
+        </ul>
+        <div class="dark-pull fade-up d2">
+          <p>"Mục tiêu rõ ràng, hành động kỷ luật và luôn hiểu rõ giá trị của từng việc mình làm."</p>
+          <small>Bài học từ hình mẫu · Lesson from the role model</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><span class="footer-logo">H. Personal Brand</span><span class="footer-copy">Chapter II · The Vision — Strategic Goals · 2026</span></footer>
+<script src="script.js"></script>
+</body>
+</html>

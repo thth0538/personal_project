@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch. VI — The Roadmap · Commitment to Action</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 9rem 0 5rem; background: var(--cream); border-bottom: 1px solid rgba(179,139,109,0.14); }
+
+/* SWOT */
+.swot { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: 3px; overflow: hidden; background: var(--sand); }
+.swot-q { padding: 3rem 2.5rem; }
+.swot-q.s { background: var(--warm-white); }
+.swot-q.w { background: var(--cream); }
+.swot-q.o { background: var(--charcoal); }
+.swot-q.t { background: var(--dark); }
+.swot-letter { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; line-height: 1; margin-bottom: 0.2rem; }
+.swot-q.s .swot-letter, .swot-q.w .swot-letter { color: var(--beige); }
+.swot-q.o .swot-letter, .swot-q.t .swot-letter { color: rgba(255,255,255,0.06); }
+.swot-name { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.75rem; font-weight: 500; }
+.swot-q.s .swot-name, .swot-q.w .swot-name { color: var(--accent); }
+.swot-q.o .swot-name, .swot-q.t .swot-name { color: var(--accent-light); }
+.swot-body { font-family: 'EB Garamond', serif; font-size: 0.98rem; line-height: 1.85; }
+.swot-q.s .swot-body, .swot-q.w .swot-body { color: var(--mid); }
+.swot-q.o .swot-body, .swot-q.t .swot-body { color: rgba(255,255,255,0.48); }
+.swot-body strong { font-weight: 500; }
+.swot-q.s .swot-body strong, .swot-q.w .swot-body strong { color: var(--charcoal); }
+.swot-q.o .swot-body strong, .swot-q.t .swot-body strong { color: rgba(255,255,255,0.85); }
+
+/* HORIZONTAL TIMELINE */
+.timeline-shell { background: var(--charcoal); padding: 5.5rem 0; }
+.timeline-head { padding: 0 3.5rem 3.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+.timeline-hint { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 0.4rem; }
+.timeline-scroll {
+  overflow-x: auto; cursor: grab;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.timeline-scroll::-webkit-scrollbar { display: none; }
+.timeline-scroll:active { cursor: grabbing; }
+.timeline-track { display: flex; padding: 0 3.5rem; width: max-content; }
+.tl-item { width: 300px; flex-shrink: 0; padding: 0 2.5rem 0 0; padding-left: 0; border-left: 1px solid rgba(212,172,142,0.18); margin-left: 2.5rem; position: relative; }
+.tl-item:first-child { border: none; margin-left: 0; }
+.tl-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; position: absolute; top: 0; left: -4px; }
+.tl-item:first-child .tl-dot { left: 0; }
+.tl-phase { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.7rem; padding-left: 1.5rem; }
+.tl-item:first-child .tl-phase { padding-left: 0; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 1rem; padding-left: 1.5rem; line-height: 1.35; }
+.tl-item:first-child .tl-title { padding-left: 0; }
+.tl-body { font-family: 'EB Garamond', serif; font-size: 0.92rem; color: rgba(255,255,255,0.45); line-height: 1.78; padding-left: 1.5rem; }
+.tl-item:first-child .tl-body { padding-left: 0; }
+.tl-badge { display: inline-block; margin-top: 1.25rem; margin-left: 1.5rem; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; background: rgba(212,172,142,0.1); color: var(--accent-light); padding: 0.3rem 0.7rem; border-radius: 20px; }
+.tl-item:first-child .tl-badge { margin-left: 0; }
+
+/* 4 STEPS */
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--sand); border-radius: 3px; overflow: hidden; }
+.step { background: var(--warm-white); padding: 2.5rem 1.75rem; position: relative; overflow: hidden; transition: background .25s; }
+.step:hover { background: var(--cream); }
+.step-bg { font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 300; color: rgba(213,201,184,0.25); position: absolute; bottom: -2rem; right: -0.5rem; line-height: 1; pointer-events: none; }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.65rem; position: relative; z-index: 1; }
+.step-body { font-size: 0.8rem; color: var(--mid); line-height: 1.7; position: relative; z-index: 1; }
+
+/* TIMELINE IMAGE */
+.roadmap-img { width: 100%; border-radius: 3px; overflow: hidden; margin: 0 0 7rem; }
+
+/* COMMITMENT */
+.commitment { border: 1px solid rgba(179,139,109,0.18); border-radius: 3px; padding: 5rem; position: relative; overflow: hidden; text-align: center; }
+.commitment::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, transparent, var(--accent-light), transparent); }
+.commitment-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 300; font-style: italic; color: var(--charcoal); line-height: 1.4; margin-bottom: 1.5rem; }
+.commitment-body { font-family: 'EB Garamond', serif; font-size: 1.05rem; color: var(--mid); max-width: 640px; margin: 0 auto; line-height: 1.88; }
+.commitment-tags { display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+.c-tag { background: var(--cream); border: 1px solid rgba(179,139,109,0.2); color: var(--accent-deep); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 0.95rem; border-radius: 20px; }
+</style>
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div><div class="page-veil"></div>
+<!-- ═══════════════════════════════════════════
+     MODAL WELCOME 
+     ═══════════════════════════════════════════ -->
+<style>
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 7000;
+  background: rgba(44,40,37,0.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; animation: overlayIn .5s ease .2s forwards;
+}
+@keyframes overlayIn { to { opacity: 1; } }
+
+.modal-box {
+  background: var(--warm-white);
+  border: 1px solid rgba(179,139,109,0.22);
+  border-radius: 4px;
+  width: 100%; max-width: 640px;
+  max-height: 88vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transform: translateY(28px); opacity: 0;
+  animation: boxIn .55s cubic-bezier(.4,0,.2,1) .35s forwards;
+  box-shadow: 0 32px 80px rgba(44,40,37,0.22);
+}
+@keyframes boxIn { to { transform: translateY(0); opacity: 1; } }
+
+.modal-header {
+  padding: 2rem 2.5rem 1.25rem;
+  border-bottom: 1px solid rgba(179,139,109,0.12);
+  display: flex; align-items: flex-start; gap: 1.25rem;
+}
+.modal-avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  background: var(--beige); overflow: hidden;
+  border: 2px solid rgba(179,139,109,0.25);
+  position: relative;
+}
+.modal-avatar img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.modal-avatar-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--parchment); text-align: center; line-height: 1.4;
+  padding: 4px;
+}
+.modal-header-text {}
+.modal-kicker {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem; font-weight: 500;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; color: var(--charcoal);
+  line-height: 1.35;
+}
+
+.modal-body {
+  padding: 1.75rem 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+.modal-greeting {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.97rem; color: var(--mid); line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.modal-greeting strong { color: var(--charcoal); font-weight: 500; }
+
+.modal-divider {
+  width: 2.5rem; height: 1px;
+  background: var(--parchment); margin: 1.5rem 0;
+}
+
+.modal-map-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 1rem; letter-spacing: 0.04em;
+}
+
+.modal-map {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(179,139,109,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+.modal-map-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid rgba(179,139,109,0.1);
+  text-decoration: none;
+  transition: background .2s;
+}
+.modal-map-row:last-child { border: none; }
+.modal-map-row:hover { background: var(--cream); }
+.modal-map-left {
+  padding: 0.85rem 1rem;
+  background: rgba(179,139,109,0.05);
+  border-right: 1px solid rgba(179,139,109,0.1);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-chapter {
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+}
+.modal-map-page {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; color: var(--charcoal); margin-top: 0.15rem;
+}
+.modal-map-right {
+  padding: 0.85rem 1.1rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-topic {
+  font-size: 0.78rem; color: var(--charcoal); font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+.modal-map-ref {
+  font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+.modal-closing {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem; color: var(--mid); line-height: 1.85;
+  margin-top: 1.25rem; font-style: italic;
+}
+
+.modal-footer {
+  padding: 1.25rem 2.5rem 1.75rem;
+  border-top: 1px solid rgba(179,139,109,0.12);
+  display: flex; justify-content: flex-end;
+}
+.modal-btn {
+  background: var(--charcoal); color: var(--cream);
+  border: none; border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.modal-btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+</style>
+
+<div class="modal-overlay" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <!-- Thay src="" bằng đường dẫn ảnh chân dung của em (100×100px, hình tròn) -->
+        <img src="./assets/welcome_card.png" alt="Thu Hương" width="100" height="100" onerror="this.style.display='none'">
+        <div class="modal-avatar-placeholder">Ảnh<br>100×100</div>
+      </div>
+      <div class="modal-header-text">
+        <p class="modal-kicker">Lời chào từ tác giả</p>
+        <h2 class="modal-title" id="modalTitle">
+          Thu Hương — Hướng dẫn<br>trải nghiệm Website
+        </h2>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p class="modal-greeting">
+        Em chào Thầy <strong>ThS. Hoàng Tuấn Dũng</strong> ạ,
+      </p>
+      <p class="modal-greeting">
+        Lời đầu tiên, em xin cảm ơn Thầy đã dành thời gian ghé thăm và xem qua sản phẩm
+        bài tập cá nhân: <strong>Xây dựng Thương hiệu cá nhân</strong> của em.
+      </p>
+      <p class="modal-greeting">
+        Để phù hợp với dòng chảy câu chuyện và phong cách trình bày của một website cá nhân
+        chuyên nghiệp, em đã sắp xếp lại các câu hỏi trong đề bài thành <strong>6 Chương (Chapter) logic.</strong>
+        Để Thầy thuận tiện hơn trong việc theo dõi và chấm điểm theo đúng lộ trình câu hỏi,
+        em xin phép gửi Thầy bản đồ hướng dẫn đối chiếu dưới đây:
+      </p>
+
+      <div class="modal-divider"></div>
+      <p class="modal-map-title">Bản đồ đối chiếu nội dung</p>
+
+      <div class="modal-map">
+        <a href="index.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Home</span>
+            <span class="modal-map-page">The Origin Story</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Tổng quan & Câu chuyện thương hiệu</span>
+            <span class="modal-map-ref">Câu VI.9</span>
+          </div>
+        </a>
+        <a href="identity.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter I</span>
+            <span class="modal-map-page">The Identity</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đánh giá cá nhân — Inner Compass</span>
+            <span class="modal-map-ref">Câu I.1 đến I.5</span>
+          </div>
+        </a>
+        <a href="vision.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter II</span>
+            <span class="modal-map-page">The Vision</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Mục tiêu thương hiệu — Strategic Goals</span>
+            <span class="modal-map-ref">Câu II.1 đến II.4</span>
+          </div>
+        </a>
+        <a href="strategy.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Ch. III & IV</span>
+            <span class="modal-map-page">The Strategy</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đối tượng mục tiêu & Định vị thương hiệu</span>
+            <span class="modal-map-ref">Câu III.1–III.4 & IV.1–IV.4</span>
+          </div>
+        </a>
+        <a href="presence.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter V</span>
+            <span class="modal-map-page">The Presence</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Nhận diện & Hình ảnh thương hiệu</span>
+            <span class="modal-map-ref">Câu V.1 đến V.4</span>
+          </div>
+        </a>
+        <a href="roadmap.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter VI</span>
+            <span class="modal-map-page">The Roadmap</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Phân tích năng lực & Lộ trình hành động</span>
+            <span class="modal-map-ref">Câu VI.1 đến VI.8</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="modal-closing">
+        Em hy vọng cách trình bày này sẽ mang lại cho Thầy một trải nghiệm mới mẻ
+        và thấy được sự đầu tư nghiêm túc của em đối với bộ môn Quản trị thương hiệu.
+        Em cảm ơn Thầy và chúc Thầy có một ngày làm việc hiệu quả ạ!
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">
+        Đã hiểu — Khám phá ngay
+      </button>
+    </div>
+
+  </div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><em>H.</em> Personal Brand</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="identity.html">Identity</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="presence.html">Presence</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:3rem;">
+      <div>
+        <p class="label fade-up">Chapter VI · The Roadmap</p>
+        <h1 class="display display-xl fade-up d2" style="margin-top:1.25rem;">Commitment<br><em>to Action</em></h1>
+      </div>
+      <p class="body-serif fade-up d2" style="max-width:300px; text-align:right;">Lộ trình hành động — từ phân tích đến cam kết cụ thể.</p>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>Phân tích · Hành động · Kiên định</span><span class="sep">·</span>
+    <span>Rõ ràng, Hệ thống, Dễ áp dụng</span><span class="sep">·</span>
+    <span>Uy tín đến từ sự nhất quán, không phải sự nổi tiếng nhất thời</span><span class="sep">·</span>
+    <span>Làm chắc, làm kỹ, đi đường dài</span><span class="sep">·</span>
+    <span>Phân tích · Hành động · Kiên định</span><span class="sep">·</span>
+    <span>Rõ ràng, Hệ thống, Dễ áp dụng</span><span class="sep">·</span>
+    <span>Uy tín đến từ sự nhất quán, không phải sự nổi tiếng nhất thời</span><span class="sep">·</span>
+    <span>Làm chắc, làm kỹ, đi đường dài</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- SWOT ──────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">Phân tích nội lực</p>
+    <div class="swot fade-up d1">
+      <div class="swot-q s">
+        <p class="swot-letter">S</p>
+        <p class="swot-name">Điểm mạnh</p>
+        <p class="swot-body">
+          <strong>Tư duy hệ thống và mạch lạc</strong> là nền tảng giúp mình luôn đánh giá mọi thứ qua những thước đo cụ thể thay vì cảm tính. Sự <strong>tận tâm và chỉn chu</strong> trong từng sản phẩm đầu ra đảm bảo chất lượng nội dung luôn giữ vững phong độ. Khả năng <strong>tự học và thích nghi nhanh</strong> cho phép mình không ngừng hoàn thiện kỹ thuật, đồng thời lấy <strong>sự chân thành</strong> làm kim chỉ nam để xây dựng niềm tin nơi người xem.
+        </p>
+      </div>
+      <div class="swot-q w">
+        <p class="swot-letter">W</p>
+        <p class="swot-name">Điểm yếu</p>
+        <p class="swot-body">
+          <strong>Sự cầu toàn quá mức</strong> đôi khi trở thành rào cản khiến mình tiêu tốn nhiều thời gian và dễ chần chừ khi chưa đạt được độ hoàn hảo mong muốn. <strong>Kỹ năng sản xuất hình ảnh</strong> hiện tại mới dừng ở mức cơ bản, chưa lột tả hết được sự tinh tế của trải nghiệm thực tế. Bên cạnh đó, <strong>vốn trải nghiệm</strong> ở phân khúc mục tiêu vẫn cần được tích lũy thêm để tạo nên những nội dung có chiều sâu thực thụ.
+        </p>
+      </div>
+      <div class="swot-q o">
+        <p class="swot-letter">O</p>
+        <p class="swot-name">Cơ hội</p>
+        <p class="swot-body">
+          <strong>Khoảng trống thị trường</strong> vẫn còn rất lớn cho những người thực hiện nội dung có tâm và có hệ thống. Nhu cầu xem để <strong>đưa ra quyết định thực tế</strong> đang ngày càng tăng cao, thay thế dần cho những nội dung giải trí đơn thuần. Đặc biệt, nền tảng <strong>kiến thức chuyên môn về Marketing</strong> giúp mình có lợi thế trong việc định hướng và phát triển thương hiệu cá nhân một cách bài bản.
+        </p>
+      </div>
+      <div class="swot-q t">
+        <p class="swot-letter">T</p>
+        <p class="swot-name">Thách thức</p>
+        <p class="swot-body">
+          Thị trường nội dung ẩm thực đang có <strong>mức độ cạnh tranh lớn</strong> với nhiều tên tuổi đã có chỗ đứng vững chắc. Việc <strong>cân đối nguồn lực</strong> giữa học tập, công việc và sản xuất nội dung đòi hỏi một sự kỷ luật thép. Đồng thời, việc duy trì <strong>chi phí trải nghiệm thực tế</strong> và bồi đắp uy tín là một bài toán dài hạn, cần sự kiên trì bền bỉ thay vì mong đợi kết quả tức thời.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ROADMAP IMAGE ─────────────────────────────── -->
+<div style="padding:0 3.5rem; margin-bottom:0;">
+  <div class="img-wrap roadmap-img" style="height:380px;">
+    <img src="./assets/roadmap.png" alt="Lộ trình phát triển toàn diện" width="1920" height="760" >
+    <div class="img-placeholder">
+      <p class="img-placeholder-label">Bản đồ lộ trình</p>
+      <p class="img-placeholder-size">1920 × 760px</p>
+      <p class="img-placeholder-label" style="margin-top:0.25rem; max-width:260px; text-align:center;">Phát triển kỹ năng hình ảnh và tư duy quản trị thương hiệu</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="timeline-shell">
+  <div class="timeline-head">
+    <div>
+      <p class="label" style="color:var(--accent-light);">Lộ trình phát triển</p>
+      <h2 class="display display-md" style="margin-top:0.75rem; color:var(--cream);">Từ hôm nay<br><em style="color:var(--accent-light);">đến mục tiêu</em></h2>
+      <p class="timeline-hint">← Kéo ngang để xem toàn bộ lộ trình</p>
+    </div>
+  </div>
+  <div class="timeline-scroll" data-drag-scroll>
+    <div class="timeline-track">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-phase">Ngay bây giờ · Nền tảng</p>
+        <h3 class="tl-title">Đặt nền móng</h3>
+        <p class="tl-body">Trau dồi kỹ năng quay chụp chuyên nghiệp. Tối ưu cách dựng phim để làm việc nhanh hơn mà vẫn giữ trọn chất lượng. Xác định cách kể chuyện xuyên suốt và tích lũy trải nghiệm đúng phân khúc mình hướng tới.</p>
+        <span class="tl-badge">Chuẩn bị</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-phase">Tháng 1–3 · Khởi động</p>
+        <h3 class="tl-title">Xây dựng kênh nội dung</h3>
+        <p class="tl-body">Duy trì tần suất nội dung đều đặn mỗi tuần với phong cách nhất quán. Tập trung vào chất lượng thông tin thay vì sự nổi tiếng tức thời. Thử nghiệm nhiều cách tiếp cận để tìm thấy sự đồng điệu với người xem.</p>
+        <span class="tl-badge">Triển khai</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-phase">Tháng 3–6 · Phát triển</p>
+        <h3 class="tl-title">Khẳng định dấu ấn</h3>
+        <p class="tl-body">Hình ảnh nhận diện rõ nét giúp người xem nhớ đến mình ngay lập tức. Thu hút đúng những người có cùng sự quan tâm. Nâng cao chất lượng âm thanh và hình ảnh, mở rộng thêm nhiều địa điểm đa dạng hơn.</p>
+        <span class="tl-badge">Tăng trưởng</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-phase">Tháng 6–12 · Củng cố</p>
+        <h3 class="tl-title">Xây dựng uy tín</h3>
+        <p class="tl-body">Người xem lựa chọn mình vì niềm tin và sự thật thà. Danh tiếng được bồi đắp từ sự bền bỉ và nhất quán. Kết nối với những tâm hồn đồng điệu, mở ra những cơ hội hợp tác và cùng chia sẻ giá trị.</p>
+        <span class="tl-badge">Uy tín</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-phase">Dài hạn · Mục tiêu cuối</p>
+        <h3 class="tl-title">Tự chủ sự nghiệp</h3>
+        <p class="tl-body">Dấu ấn cá nhân đủ mạnh để tự tạo ra những cơ hội mới. Kết hợp hài hòa giữa công việc chuyên môn và thương hiệu riêng. Từng bước làm chủ các dự án cá nhân và vận hành công việc theo cách mình mong muốn.</p>
+        <span class="tl-badge">Tự chủ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">Quy trình 4 bước</p>
+    <div class="steps fade-up d1">
+      <div class="step">
+        <p class="step-title">Trải nghiệm thực tế</p>
+        <p class="step-body">Chủ động đi ăn, chi trả bằng tiền thật và trải nghiệm đúng phân khúc mục tiêu. Mọi nội dung sâu sắc đều bắt nguồn từ những cảm nhận thật nhất.</p>
+        <span class="step-bg">1</span>
+      </div>
+      <div class="step">
+        <p class="step-title">Phân tích và Tổng hợp</p>
+        <p class="step-body">Nhìn nhận trải nghiệm qua những tiêu chí rõ ràng như hương vị, không gian, dịch vụ và độ xứng đáng. Biến những cảm nhận cá nhân thành thông tin có ích.</p>
+        <span class="step-bg">2</span>
+      </div>
+      <div class="step">
+        <p class="step-title">Sáng tạo nội dung</p>
+        <p class="step-body">Biến những phân tích thành các thước phim ngắn gọn, dễ hiểu và dễ làm theo. Giúp người xem đưa ra lựa chọn chính xác ngay sau khi xem xong.</p>
+        <span class="step-bg">3</span>
+      </div>
+      <div class="step">
+        <p class="step-title">Bền bỉ và Cải thiện</p>
+        <p class="step-body">Luôn giữ vững các tiêu chí đánh giá ban đầu. Lắng nghe phản hồi để hoàn thiện kỹ thuật kể chuyện nhưng tuyệt đối không thay đổi giá trị cốt lõi.</p>
+        <span class="step-bg">4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="commitment fade-up">
+      <p style="font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1.75rem;">Cam kết cá nhân</p>
+      <p class="commitment-title">
+        "Thương hiệu không xây bằng sự nổi tiếng nhất thời,<br>
+        mà bằng sự nhất quán trong từng lời đánh giá."
+      </p>
+      <p class="commitment-body">
+        Mình không tìm kiếm sự lan tỏa nhanh chóng. Mình chọn xây dựng niềm tin dài hạn bằng cách luôn tôn trọng sự thật, cung cấp thông tin rõ ràng và giữ trọn phong cách làm việc tận tâm. Khi người xem cảm thấy vững tâm khi làm theo những gì mình chia sẻ, đó là lúc giá trị thực sự được hình thành.
+      </p>
+      <div class="commitment-tags">
+        <span class="c-tag">Rõ ràng</span>
+        <span class="c-tag">Chỉn chu</span>
+        <span class="c-tag">Dễ áp dụng</span>
+        <span class="c-tag">Nhất quán</span>
+        <span class="c-tag">Dài hạn</span>
+        <span class="c-tag">Đáng tin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="text-align:center;">
+    <p class="label" style="justify-content:center; margin-bottom:1.25rem;">Hành trình đã hoàn chỉnh</p>
+    <h2 class="display display-md" style="margin-bottom:0.5rem;">Từ Bản sắc đến Hành động</h2>
+    <p class="body-serif" style="margin-bottom:2.5rem; max-width:440px; margin-left:auto; margin-right:auto;">
+      Sáu chương, một thương hiệu. Được bồi đắp từ bên trong ra bên ngoài, từ những giá trị cá nhân đến chiến lược hành động cụ thể.
+    </p>
+    <a href="index.html" class="btn btn-dark">Về trang chủ</a>
+  </div>
+</section>
+
+<footer><span class="footer-logo">H. Personal Brand</span><span class="footer-copy">Chapter VI · The Roadmap — Commitment to Action · 2026</span></footer>
+<script src="script.js"></script>
+</body>
+</html>
