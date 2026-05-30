@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home — The Origin Story · Huong's Personal Brand</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 60px;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem 6rem 3.5rem;
+  border-right: 1px solid rgba(179,139,109,0.12);
+}
+.hero-right { position: relative; overflow: hidden; background: var(--beige); }
+.hero-right .img-wrap { width: 100%; height: 100%; }
+
+.hero-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; margin-bottom: 1.75rem;
+}
+.hero-cta { display: flex; gap: 1rem; align-items: center; margin-top: 2.75rem; flex-wrap: wrap; }
+
+/* ── INTRO SECTION ───────────────────────────────── */
+.intro-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 6rem; align-items: start; }
+.intro-sticky { position: sticky; top: 5rem; }
+.chapter-ref {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5.5rem; font-weight: 300;
+  color: var(--beige); line-height: 1;
+  margin-bottom: -0.75rem; letter-spacing: -0.02em;
+}
+
+/* ── VALUES BAR ──────────────────────────────────── */
+.values-bar {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border-top: 1px solid rgba(179,139,109,0.16);
+  border-left: 1px solid rgba(179,139,109,0.16);
+}
+.value-cell {
+  padding: 2.25rem 1.75rem;
+  border-right: 1px solid rgba(179,139,109,0.16);
+  border-bottom: 1px solid rgba(179,139,109,0.16);
+  transition: background .25s;
+}
+.value-cell:hover { background: var(--cream); }
+.value-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 0.6rem;
+}
+.value-body { font-size: 0.8rem; color: var(--mid); line-height: 1.7; }
+
+/* ── CHAPTERS GRID ───────────────────────────────── */
+.chapters-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem;
+}
+.ch-card {
+  padding: 2.25rem 2rem; text-decoration: none; color: inherit;
+  position: relative; overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+.ch-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .35s ease;
+}
+.ch-card:hover::after { transform: scaleX(1); }
+.ch-card:hover { transform: translateY(-4px); box-shadow: 0 18px 52px rgba(44,40,37,0.07); }
+.ch-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 300; color: var(--beige);
+  line-height: 1; margin-bottom: 0.5rem;
+}
+.ch-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 0.6rem; line-height: 1.35;
+}
+.ch-sub { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.85rem; }
+.ch-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.65; }
+
+/* ── BRAND STATEMENT ─────────────────────────────── */
+.brand-stmt {
+  background: var(--charcoal);
+  padding: 6rem 3.5rem;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center;
+}
+.brand-stmt-label {
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--accent-light); font-weight: 500;
+}
+.brand-stmt-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1.45;
+}
+.brand-stmt-sub {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem; color: rgba(255,255,255,0.45);
+  line-height: 1.85; margin-top: 1.5rem;
+}
+</style>
+</head>
+<body>
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+<div class="page-veil"></div>
+<!-- ═══════════════════════════════════════════
+     MODAL WELCOME 
+     ═══════════════════════════════════════════ -->
+<style>
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 7000;
+  background: rgba(44,40,37,0.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; animation: overlayIn .5s ease .2s forwards;
+}
+@keyframes overlayIn { to { opacity: 1; } }
+
+.modal-box {
+  background: var(--warm-white);
+  border: 1px solid rgba(179,139,109,0.22);
+  border-radius: 4px;
+  width: 100%; max-width: 640px;
+  max-height: 88vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transform: translateY(28px); opacity: 0;
+  animation: boxIn .55s cubic-bezier(.4,0,.2,1) .35s forwards;
+  box-shadow: 0 32px 80px rgba(44,40,37,0.22);
+}
+@keyframes boxIn { to { transform: translateY(0); opacity: 1; } }
+
+.modal-header {
+  padding: 2rem 2.5rem 1.25rem;
+  border-bottom: 1px solid rgba(179,139,109,0.12);
+  display: flex; align-items: flex-start; gap: 1.25rem;
+}
+.modal-avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  background: var(--beige); overflow: hidden;
+  border: 2px solid rgba(179,139,109,0.25);
+  position: relative;
+}
+.modal-avatar img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.modal-avatar-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--parchment); text-align: center; line-height: 1.4;
+  padding: 4px;
+}
+.modal-header-text {}
+.modal-kicker {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem; font-weight: 500;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; color: var(--charcoal);
+  line-height: 1.35;
+}
+
+.modal-body {
+  padding: 1.75rem 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+.modal-greeting {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.97rem; color: var(--mid); line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.modal-greeting strong { color: var(--charcoal); font-weight: 500; }
+
+.modal-divider {
+  width: 2.5rem; height: 1px;
+  background: var(--parchment); margin: 1.5rem 0;
+}
+
+.modal-map-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 1rem; letter-spacing: 0.04em;
+}
+
+.modal-map {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(179,139,109,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+.modal-map-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid rgba(179,139,109,0.1);
+  text-decoration: none;
+  transition: background .2s;
+}
+.modal-map-row:last-child { border: none; }
+.modal-map-row:hover { background: var(--cream); }
+.modal-map-left {
+  padding: 0.85rem 1rem;
+  background: rgba(179,139,109,0.05);
+  border-right: 1px solid rgba(179,139,109,0.1);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-chapter {
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+}
+.modal-map-page {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; color: var(--charcoal); margin-top: 0.15rem;
+}
+.modal-map-right {
+  padding: 0.85rem 1.1rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-topic {
+  font-size: 0.78rem; color: var(--charcoal); font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+.modal-map-ref {
+  font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+.modal-closing {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem; color: var(--mid); line-height: 1.85;
+  margin-top: 1.25rem; font-style: italic;
+}
+
+.modal-footer {
+  padding: 1.25rem 2.5rem 1.75rem;
+  border-top: 1px solid rgba(179,139,109,0.12);
+  display: flex; justify-content: flex-end;
+}
+.modal-btn {
+  background: var(--charcoal); color: var(--cream);
+  border: none; border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.modal-btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+</style>
+
+<div class="modal-overlay" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <!-- Thay src="" bằng đường dẫn ảnh chân dung của em (100×100px, hình tròn) -->
+        <img src="./assets/welcome_card.png" alt="Thu Hương" width="100" height="100" onerror="this.style.display='none'">
+        <div class="modal-avatar-placeholder">Ảnh<br>100×100</div>
+      </div>
+      <div class="modal-header-text">
+        <p class="modal-kicker">Lời chào từ tác giả</p>
+        <h2 class="modal-title" id="modalTitle">
+          Thu Hương — Hướng dẫn<br>trải nghiệm Website
+        </h2>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p class="modal-greeting">
+        Em chào Thầy <strong>ThS. Hoàng Tuấn Dũng</strong> ạ,
+      </p>
+      <p class="modal-greeting">
+        Lời đầu tiên, em xin cảm ơn Thầy đã dành thời gian ghé thăm và xem qua sản phẩm
+        bài tập cá nhân: <strong>Xây dựng Thương hiệu cá nhân</strong> của em.
+      </p>
+      <p class="modal-greeting">
+        Để phù hợp với dòng chảy câu chuyện và phong cách trình bày của một website cá nhân
+        chuyên nghiệp, em đã sắp xếp lại các câu hỏi trong đề bài thành <strong>6 Chương (Chapter) logic.</strong>
+        Để Thầy thuận tiện hơn trong việc theo dõi và chấm điểm theo đúng lộ trình câu hỏi,
+        em xin phép gửi Thầy bản đồ hướng dẫn đối chiếu dưới đây:
+      </p>
+
+      <div class="modal-divider"></div>
+      <p class="modal-map-title">Bản đồ đối chiếu nội dung</p>
+
+      <div class="modal-map">
+        <a href="index.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Home</span>
+            <span class="modal-map-page">The Origin Story</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Tổng quan & Câu chuyện thương hiệu</span>
+            <span class="modal-map-ref">Câu VI.9</span>
+          </div>
+        </a>
+        <a href="identity.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter I</span>
+            <span class="modal-map-page">The Identity</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đánh giá cá nhân — Inner Compass</span>
+            <span class="modal-map-ref">Câu I.1 đến I.5</span>
+          </div>
+        </a>
+        <a href="vision.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter II</span>
+            <span class="modal-map-page">The Vision</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Mục tiêu thương hiệu — Strategic Goals</span>
+            <span class="modal-map-ref">Câu II.1 đến II.4</span>
+          </div>
+        </a>
+        <a href="strategy.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Ch. III & IV</span>
+            <span class="modal-map-page">The Strategy</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đối tượng mục tiêu & Định vị thương hiệu</span>
+            <span class="modal-map-ref">Câu III.1–III.4 & IV.1–IV.4</span>
+          </div>
+        </a>
+        <a href="presence.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter V</span>
+            <span class="modal-map-page">The Presence</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Nhận diện & Hình ảnh thương hiệu</span>
+            <span class="modal-map-ref">Câu V.1 đến V.4</span>
+          </div>
+        </a>
+        <a href="roadmap.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter VI</span>
+            <span class="modal-map-page">The Roadmap</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Phân tích năng lực & Lộ trình hành động</span>
+            <span class="modal-map-ref">Câu VI.1 đến VI.8</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="modal-closing">
+        Em hy vọng cách trình bày này sẽ mang lại cho Thầy một trải nghiệm mới mẻ
+        và thấy được sự đầu tư nghiêm túc của em đối với bộ môn Quản trị thương hiệu.
+        Em cảm ơn Thầy và chúc Thầy có một ngày làm việc hiệu quả ạ!
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">
+        Đã hiểu — Khám phá ngay
+      </button>
+    </div>
+
+  </div>
+</div>
+<!-- ═══════════════════════════════════════════ FIN MODAL -->
+<nav>
+  <a href="index.html" class="nav-logo"><em>H.</em> Personal Brand</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="identity.html">Identity</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="presence.html">Presence</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-up">The Origin Story · Executive Summary</p>
+    <h1 class="display display-xl fade-up d2">
+      Trải nghiệm<br>thay bạn, để<br>bạn luôn <em>vững<br>tâm lựa chọn.</em>
+    </h1>
+    <div class="rule fade-up d3"></div>
+    <p class="body-serif fade-up d3" style="max-width:480px;">
+      Câu chuyện này không bắt đầu từ những lý tưởng xa vời, mà từ thói quen đời thường của mình: <strong>luôn cân nhắc kỹ lưỡng về giá trị nhận lại</strong>. Mình hiểu rằng ai cũng khao khát cái đẹp và sự chỉn chu, nhưng không ai muốn chi trả một cách cảm tính.
+    </p>
+    <p class="body-serif fade-up d3" style="max-width:480px;"> 
+      Mình chọn cách trải nghiệm trước để thay bạn giải mã giá trị thực sự. Giúp bạn bước vào những không gian cao cấp với tâm thế vững vàng và <strong>sự lựa chọn tối ưu nhất</strong>.
+    </p>
+    <div class="hero-cta fade-up d4">
+      <a href="identity.html" class="btn btn-dark">Khám phá hành trình</a>
+      <a href="#chapters" class="btn btn-text">Xem 6 chương</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="img-wrap" style="height:100%;">
+      <img src="./assets/hero.jpg" alt="Hero visual — close-up bàn tay và món ăn, phong cách editorial" width="960" height="1080">
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Thu Huong</p>
+        <p class="img-placeholder-size">since 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>Giải mã trải nghiệm</span><span class="sep">·</span>
+    <span>Tư duy chiến lược</span><span class="sep">·</span>
+    <span>Góc nhìn INFJ</span><span class="sep">·</span>
+    <span>Minh bạch giá trị</span><span class="sep">·</span>
+    <span>Trải nghiệm mẫu cho bạn</span><span class="sep">·</span>
+    <span>Logic · Thấu cảm</span><span class="sep">·</span>
+    <span>Tử tế Tận tâm</span><span class="sep">·</span>
+    
+    <span>Giải mã trải nghiệm</span><span class="sep">·</span>
+    <span>Tư duy chiến lược</span><span class="sep">·</span>
+    <span>Góc nhìn INFJ</span><span class="sep">·</span>
+    <span>Minh bạch giá trị</span><span class="sep">·</span>
+    <span>Trải nghiệm mẫu cho bạn</span><span class="sep">·</span>
+    <span>Logic · Thấu cảm</span><span class="sep">·</span>
+    <span>Tử tế Tận tâm</span><span class="sep">·</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-sticky">
+        <p class="chapter-ref">00</p>
+        <p class="label fade-up">The Origin Story</p>
+        <h2 class="display display-md fade-up d1" style="margin-top:1rem;">
+          Tại sao<br>mình làm điều<br><em>này?</em>
+        </h2>
+      </div>
+      <div>
+        <p class="body-serif fade-up">
+          Câu chuyện không bắt đầu từ những lý tưởng lớn, mà từ một thói quen rất đời thường: mình <strong>không bao giờ ăn mà không phân tích.</strong> Với mình, mỗi bữa ăn là một bài toán về sự cân bằng, từ cách chế biến tối ưu đến việc trải nghiệm nhận về có thực sự xứng đáng với số tiền bỏ ra hay không.
+        </p>
+        <div class="pull-quote fade-up d1">
+          "Mình nhận ra ngoài kia có rất nhiều người cũng đang loay hoay với những câu hỏi đó. Họ cần một điểm tựa tin cậy trước khi quyết định."
+        </div>
+        <p class="body-serif fade-up d2">
+          Đó là lý do mình chọn trải nghiệm trước để thấu hiểu sau.   </p>
+   
+            <div class="pull-quote fade-up d1">
+          Mình muốn chia sẻ như một người bạn thân
+          </div>
+            <p class="body-serif fade-up d2">
+          Không nói quá, không làm màu và không ngại chạm vào những thực tế về giá cả hay chất lượng. 
+          Mỗi nội dung mình tạo ra là một lời khẳng định: <strong>mình đã thử rồi, bạn có thể yên tâm lựa chọn.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 0 0 7rem;">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2rem;">Giá trị cốt lõi</p>
+    <div class="values-bar fade-up d1">
+      <div class="value-cell">
+        <p class="value-title"><strong>Thấu cảm</strong></p>
+        <p class="value-body">Lắng nghe những băn khoăn chưa nói thành lời để đưa ra câu trả lời đúng lúc, đúng trọng tâm nỗi lo của bạn.</p>
+      </div>
+      <div class="value-cell">
+        <p class="value-title"><strong>Logic hệ thống</strong></p>
+        <p class="value-body">Mọi đánh giá đều dựa trên tiêu chí rõ ràng, không cảm tính, không mơ hồ, giúp bạn có cái nhìn khách quan nhất.</p>
+      </div>
+      <div class="value-cell">
+        <p class="value-title"><strong>Sự xứng đáng</strong></p>
+        <p class="value-body">Mọi trải nghiệm đều xoay quanh một câu hỏi duy nhất: Liệu thời gian và chi phí bỏ ra có thực sự xứng đáng?</p>
+      </div>
+      <div class="value-cell">
+        <p class="value-title"><strong>Minh bạch</strong></p>
+        <p class="value-body">Sẵn sàng gọi tên những hạn chế và mức giá thực tế, vì sự tử tế quan trọng hơn một vỏ bọc hoàn hảo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL BREAK ─────────────────────────────── -->
+<div style="padding: 0 3.5rem;">
+  <div class="img-wrap" style="height: 420px; border-radius: 3px;">
+    <img src="./assets/index_back.jpg" alt="Visual break — cảnh quay ngang không gian nhà hàng cao cấp, tông màu ấm" width="1920" height="840" >
+    <div class="img-placeholder">
+      <p class="img-placeholder-label">Visualize the Truth</p>
+      <p class="img-placeholder-size">Capture every moment</p>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="chapters">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem;">
+      <div>
+        <p class="label fade-up">6 Chương · Lộ trình thương hiệu</p>
+        <h2 class="display display-md fade-up d1" style="margin-top:0.75rem;">
+          Từ <em>Identity</em> đến <em>Action</em>
+        </h2>
+      </div>
+      <p style="font-size:0.78rem; color:var(--muted); max-width:200px; text-align:right; line-height:1.65;" class="fade-up d2">
+        Mỗi chương là một mảnh ghép định hình nên bản sắc và uy tín của thương hiệu.
+      </p>
+    </div>
+    <div class="chapters-grid">
+      <a href="identity.html" class="ch-card card-base">
+        <p class="ch-num">I</p>
+        <p class="ch-sub">The Identity</p>
+        <h3 class="ch-title"><strong>Inner Compass</strong><br>Kim chỉ nam giá trị</h3>
+        <p class="ch-desc">Khám phá bản sắc INFJ và sự giao thoa giữa tư duy kỹ tính trong công việc với sự điềm tĩnh trong cuộc sống.</p>
+        <p class="btn btn-text" style="margin-top:1.25rem; font-size:0.65rem;">Khám phá</p>
+      </a>
+      <a href="vision.html" class="ch-card card-base">
+        <p class="ch-num">II</p>
+        <p class="ch-sub">The Vision</p>
+        <h3 class="ch-title"><strong>Strategic Goals</strong><br>Tầm nhìn & Mục tiêu</h3>
+        <p class="ch-desc">Hành trình trở thành Marketing Executive và cách đưa đam mê ẩm thực vào một hệ thống vận hành chuyên nghiệp.</p>
+        <p class="btn btn-text" style="margin-top:1.25rem; font-size:0.65rem;">Khám phá</p>
+      </a>
+      <a href="strategy.html" class="ch-card card-base">
+        <p class="ch-num">III–IV</p>
+        <p class="ch-sub">The Strategy</p>
+        <h3 class="ch-title"><strong>Target & Positioning</strong><br>Định vị thị trường</h3>
+        <p class="ch-desc">Giải mã nhu cầu về sự minh bạch trong trải nghiệm cao cấp và cách mình xây dựng điểm tựa niềm tin cho cộng đồng.</p>
+        <p class="btn btn-text" style="margin-top:1.25rem; font-size:0.65rem;">Khám phá</p>
+      </a>
+      <a href="presence.html" class="ch-card card-base">
+        <p class="ch-num">V</p>
+        <p class="ch-sub">The Presence</p>
+        <h3 class="ch-title"><strong>Visual Soul</strong><br>Sự hiện diện & Hình ảnh</h3>
+        <p class="ch-desc">Lý giải ngôn ngữ hình ảnh từ góc nhìn thứ nhất và lời cam kết về uy tín thông qua sự chỉn chu trong từng khung hình.</p>
+        <p class="btn btn-text" style="margin-top:1.25rem; font-size:0.65rem;">Khám phá</p>
+      </a>
+      <a href="roadmap.html" class="ch-card card-base">
+        <p class="ch-num">VI</p>
+        <p class="ch-sub">The Roadmap</p>
+        <h3 class="ch-title"><strong>Commitment</strong><br>Lộ trình hành động</h3>
+        <p class="ch-desc">Phân tích năng lực thực tại, chiến lược đầu tư vào trải nghiệm và cam kết duy trì giá trị tử tế trên đường dài.</p>
+        <p class="btn btn-text" style="margin-top:1.25rem; font-size:0.65rem;">Khám phá</p>
+      </a>
+      <div class="ch-card card-dark" style="display:flex; flex-direction:column; justify-content:center; padding:2.5rem 2rem; cursor:default;">
+        <p style="font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--accent-light); margin-bottom:1rem;">Thương hiệu cá nhân</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-style:italic; font-weight:300; color:var(--cream); line-height:1.5;">
+          "Trải nghiệm thay bạn, để bạn luôn vững tâm lựa chọn."
+        </p>
+        <div style="width:2rem; height:1px; background:var(--accent-light); margin:1.5rem 0;"></div>
+        <p style="font-size:0.72rem; color:rgba(255,255,255,0.3); letter-spacing:0.08em;">Food Reviewer · INFJ · Marketing Executive</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="brand-stmt">
+  <p class="brand-stmt-label fade-up">Cam kết thương hiệu</p>
+  <div>
+    <p class="brand-stmt-quote fade-up d1">
+      "Mình đã trải nghiệm rồi.<br>Bạn có thể vững tâm lựa chọn."
+    </p>
+    <p class="brand-stmt-sub fade-up d2">
+      Không nói quá, không làm màu và không ngại chạm vào những thực tế về giá cả hay chất lượng. 
+      Đó là lời hứa trong từng nội dung mình tạo ra. Sự tử tế và minh bạch chính là nền tảng để mình xây dựng niềm tin dài hạn cùng bạn.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">H. Personal Brand</span>
+  <span class="footer-copy">Quản trị Thương hiệu · Brand Management Assignment · 2026</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

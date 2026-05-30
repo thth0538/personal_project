@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch. I — The Identity · Inner Compass</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 9rem 0 5rem; background: var(--cream); border-bottom: 1px solid rgba(179,139,109,0.14); }
+.hero-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 3rem; }
+
+/* MBTI */
+.mbti-card {
+  background: var(--charcoal); border-radius: 3px;
+  padding: 3rem 2.5rem; position: relative; overflow: hidden;
+}
+.mbti-bg {
+  position: absolute; bottom: -2rem; right: -1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9rem; font-weight: 300; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
+}
+.mbti-type {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; font-weight: 300; color: var(--cream);
+  letter-spacing: 0.2em; line-height: 1; margin-bottom: 0.35rem;
+}
+.mbti-name { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 2.25rem; }
+.bar-row { margin-bottom: 1rem; }
+.bar-labels { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+.bar-labels span { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.bar-labels span:first-child { color: var(--accent-light); }
+.bar-track { height: 2px; background: rgba(255,255,255,0.08); border-radius: 1px; }
+.bar-fill {
+  height: 100%; background: var(--accent-light); border-radius: 1px;
+  transform: scaleX(0); transform-origin: left;
+  animation: grow 1.4s cubic-bezier(.4,0,.2,1) forwards;
+  animation-delay: var(--d, 0.3s);
+}
+@keyframes grow { to { transform: scaleX(1); } }
+
+/* CONTRAST CARDS */
+.contrast-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.contrast-item { padding: 2.75rem 2.5rem; }
+.contrast-item.light { background: var(--cream); }
+.contrast-item.dark  { background: var(--charcoal); }
+.contrast-kicker { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.25rem; }
+.contrast-item.light .contrast-kicker { color: var(--accent); }
+.contrast-item.dark  .contrast-kicker { color: var(--accent-light); }
+.contrast-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-style: italic; font-weight: 300;
+  line-height: 1.55; margin-bottom: 1.25rem;
+}
+.contrast-item.light .contrast-headline { color: var(--charcoal); }
+.contrast-item.dark  .contrast-headline { color: var(--cream); }
+.contrast-body { font-family: 'EB Garamond', serif; font-size: 0.95rem; line-height: 1.8; }
+.contrast-item.light .contrast-body { color: var(--mid); }
+.contrast-item.dark  .contrast-body { color: rgba(255,255,255,0.45); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+.tag {
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.28rem 0.75rem; border-radius: 20px;
+}
+.tag-warm { background: var(--beige); color: var(--accent-deep); }
+.tag-ghost { background: rgba(255,255,255,0.06); color: var(--accent-light); }
+
+/* ACCORDION */
+.acc-item { border-bottom: 1px solid rgba(179,139,109,0.14); }
+.acc-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.65rem 0; cursor: pointer;
+  transition: color .2s;
+}
+.acc-header:hover .acc-title { color: var(--accent-deep); }
+.acc-left {}
+.acc-num { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+.acc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 400; color: var(--charcoal);
+  transition: color .2s;
+}
+.acc-toggle {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(179,139,109,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--accent); flex-shrink: 0;
+  background: transparent; cursor: none;
+  transition: background .2s, transform .3s;
+}
+.acc-item.open .acc-toggle { transform: rotate(45deg); background: var(--accent); color: white; border-color: var(--accent); }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height .5s ease; }
+.acc-item.open .acc-body { max-height: 800px; }
+.acc-content { padding-bottom: 1.75rem; }
+.acc-content p {
+  font-family: 'EB Garamond', serif; font-size: 1.02rem;
+  color: var(--mid); line-height: 1.88; margin-bottom: 0.9rem;
+}
+.acc-content p strong { color: var(--charcoal); font-weight: 500; }
+
+/* SKILLS GRID */
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.skill-item {
+  padding: 2rem 1.75rem;
+  border: 1px solid rgba(179,139,109,0.14); border-radius: 3px;
+  transition: background .25s, transform .25s;
+}
+.skill-item:hover { background: var(--cream); transform: translateY(-3px); }
+.skill-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+.skill-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.65; }
+</style>
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div><div class="page-veil"></div>
+<!-- ═══════════════════════════════════════════
+     MODAL WELCOME 
+     ═══════════════════════════════════════════ -->
+<style>
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 7000;
+  background: rgba(44,40,37,0.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; animation: overlayIn .5s ease .2s forwards;
+}
+@keyframes overlayIn { to { opacity: 1; } }
+
+.modal-box {
+  background: var(--warm-white);
+  border: 1px solid rgba(179,139,109,0.22);
+  border-radius: 4px;
+  width: 100%; max-width: 640px;
+  max-height: 88vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transform: translateY(28px); opacity: 0;
+  animation: boxIn .55s cubic-bezier(.4,0,.2,1) .35s forwards;
+  box-shadow: 0 32px 80px rgba(44,40,37,0.22);
+}
+@keyframes boxIn { to { transform: translateY(0); opacity: 1; } }
+
+.modal-header {
+  padding: 2rem 2.5rem 1.25rem;
+  border-bottom: 1px solid rgba(179,139,109,0.12);
+  display: flex; align-items: flex-start; gap: 1.25rem;
+}
+.modal-avatar {
+  width: 69px; height: 69px; border-radius: 50%; flex-shrink: 0;
+  position: relative;
+}
+.modal-avatar img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.modal-header-text {}
+.modal-kicker {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem; font-weight: 500;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; color: var(--charcoal);
+  line-height: 1.35;
+}
+
+.modal-body {
+  padding: 1.75rem 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+.modal-greeting {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.97rem; color: var(--mid); line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.modal-greeting strong { color: var(--charcoal); font-weight: 500; }
+
+.modal-divider {
+  width: 2.5rem; height: 1px;
+  background: var(--parchment); margin: 1.5rem 0;
+}
+
+.modal-map-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 1rem; letter-spacing: 0.04em;
+}
+
+.modal-map {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(179,139,109,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+.modal-map-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid rgba(179,139,109,0.1);
+  text-decoration: none;
+  transition: background .2s;
+}
+.modal-map-row:last-child { border: none; }
+.modal-map-row:hover { background: var(--cream); }
+.modal-map-left {
+  padding: 0.85rem 1rem;
+  background: rgba(179,139,109,0.05);
+  border-right: 1px solid rgba(179,139,109,0.1);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-chapter {
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+}
+.modal-map-page {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; color: var(--charcoal); margin-top: 0.15rem;
+}
+.modal-map-right {
+  padding: 0.85rem 1.1rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-topic {
+  font-size: 0.78rem; color: var(--charcoal); font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+.modal-map-ref {
+  font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+.modal-closing {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem; color: var(--mid); line-height: 1.85;
+  margin-top: 1.25rem; font-style: italic;
+}
+
+.modal-footer {
+  padding: 1.25rem 2.5rem 1.75rem;
+  border-top: 1px solid rgba(179,139,109,0.12);
+  display: flex; justify-content: flex-end;
+}
+.modal-btn {
+  background: var(--charcoal); color: var(--cream);
+  border: none; border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.modal-btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+</style>
+
+<div class="modal-overlay" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <img src="./assets/welcome_card.png" alt="Thu Hương" width="100" height="100" onerror="this.style.display='none'">
+            </div>
+      <div class="modal-header-text">
+        <p class="modal-kicker">Lời chào từ tác giả</p>
+        <h2 class="modal-title" id="modalTitle">
+          <strong>Trần Thị Thu Hương </strong>
+          <br>Hướng dẫn trải nghiệm Website
+        </h2>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p class="modal-greeting">
+        Kính gửi <strong>Thầy Hoàng Tuấn Dũng</strong>,
+      </p>
+      <p class="modal-greeting">
+        Lời đầu tiên, em xin cảm ơn Thầy đã dành thời gian ghé thăm và xem qua sản phẩm
+        bài tập cá nhân: <strong>Xây dựng Thương hiệu cá nhân</strong> của em ạ.
+      </p>
+      <p class="modal-greeting">
+        Vì mục đích phù hợp với dòng chảy câu chuyện và phong cách trình bày của một website cá nhân
+        chuyên nghiệp, em đã sắp xếp lại các câu hỏi trong đề bài thành <strong>6 Chương</strong> với cái tên hơi khác so với đề bài một chút.
+      </p>    
+      <p class="modal-greeting"> Vậy nên, để Thầy thuận tiện hơn trong việc theo dõi và chấm điểm <strong> đúng lộ trình câu hỏi</strong>,
+        em xin phép gửi Thầy bản đồ hướng dẫn đối chiếu dưới đây:
+      </p>
+
+      <div class="modal-divider"></div>
+      <p class="modal-map-title"><strong>Bản đồ đối chiếu nội dung</strong></p>
+
+      <div class="modal-map">
+        <a href="index.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Home</span>
+            <span class="modal-map-page">The Origin Story</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Tổng quan & Câu chuyện thương hiệu</span>
+            <span class="modal-map-ref">Câu VI.9</span>
+          </div>
+        </a>
+        <a href="identity.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter I</span>
+            <span class="modal-map-page">The Identity</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đánh giá cá nhân — Inner Compass</span>
+            <span class="modal-map-ref">Câu I.1 đến I.5</span>
+          </div>
+        </a>
+        <a href="vision.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter II</span>
+            <span class="modal-map-page">The Vision</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Mục tiêu thương hiệu — Strategic Goals</span>
+            <span class="modal-map-ref">Câu II.1 đến II.4</span>
+          </div>
+        </a>
+        <a href="strategy.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Ch. III & IV</span>
+            <span class="modal-map-page">The Strategy</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đối tượng mục tiêu & Định vị thương hiệu</span>
+            <span class="modal-map-ref">Câu III.1–III.4 & IV.1–IV.4</span>
+          </div>
+        </a>
+        <a href="presence.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter V</span>
+            <span class="modal-map-page">The Presence</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Nhận diện & Hình ảnh thương hiệu</span>
+            <span class="modal-map-ref">Câu V.1 đến V.4</span>
+          </div>
+        </a>
+        <a href="roadmap.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter VI</span>
+            <span class="modal-map-page">The Roadmap</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Phân tích năng lực & Lộ trình hành động</span>
+            <span class="modal-map-ref">Câu VI.1 đến VI.8</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="modal-closing">
+        Em hy vọng cách trình bày này sẽ mang lại cho Thầy một trải nghiệm mới mẻ
+        và thấy được <strong>sự đầu tư nghiêm túc</strong> của em đối với bộ môn <strong>Quản trị thương hiệu</strong>.
+      </p>  
+      <p class="modal-closing">Em cảm ơn Thầy và chúc Thầy có một ngày làm việc hiệu quả ạ!</p>
+      
+    </div>
+
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">
+        Đã hiểu — Khám phá ngay
+      </button>
+    </div>
+
+  </div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><em>H.</em> Personal Brand</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="identity.html">Identity</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="presence.html">Presence</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <p class="label fade-up">Chapter I · The Identity</p>
+        <h1 class="display display-xl fade-up d2" style="margin-top:1.25rem;">
+          Inner<br><em>Compass</em>
+        </h1>
+        <p style="font-size:0.78rem; color:var(--muted); margin-top:1rem;" class="fade-up d3">Nơi những giá trị bắt đầu · Core Identity</p>
+      </div>
+      <p class="body-serif fade-up d2" style="max-width:340px; text-align:right;">
+        Thay vì một tờ CV khô khan, mình muốn kể về bản thân qua những trải nghiệm thực tế, những giá trị riêng và cách mình lặng lẽ quan sát, kết nối với thế giới này.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>INFJ · Người Cố Vấn</span><span class="sep">·</span>
+    <span>Hướng ngoại có chọn lọc.</span><span class="sep">·</span>
+    <span>Chậm lại để thấu suốt</span><span class="sep">·</span>
+    <span>Làm ra trò, sống ra chất</span><span class="sep">·</span>
+    <span>Khó tính trong công việc · Dễ chịu trong cuộc sống</span><span class="sep">·</span>
+    <span>INFJ · Người Cố Vấn</span><span class="sep">·</span>
+    <span>Hướng ngoại có chọn lọc.</span><span class="sep">·</span>
+    <span>Chậm lại để thấu suốt</span><span class="sep">·</span>
+    <span>Làm ra trò, sống ra chất</span><span class="sep">·</span>
+    <span>Khó tính trong công việc · Dễ chịu trong cuộc sống</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- MBTI + TRAITS ───────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <p class="label fade-up">Hệ giá trị & Tính cách</p>
+    <div style="display:grid; grid-template-columns:5fr 7fr; gap:4rem; margin-top:2.5rem; align-items:start;">
+      <div class="mbti-card fade-up d1">
+        <div class="mbti-bg">INFJ</div>
+        <p class="mbti-type">INFJ</p>
+        <p class="mbti-name">The Advocate · Người Cố Vấn</p>
+        <div class="bar-row">
+          <div class="bar-labels"><span>Introversion</span><span>Extraversion</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:72%; --d:0.5s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-labels"><span>Intuition</span><span>Sensing</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:68%; --d:0.65s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-labels"><span>Feeling</span><span>Thinking</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%; --d:0.8s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-labels"><span>Judging</span><span>Perceiving</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%; --d:0.95s;"></div></div>
+        </div>
+      </div>
+      <div class="fade-up d2">
+        <p class="body-serif">
+          Mình là người <strong>hướng ngoại có chọn lọc</strong>. 
+          Không khép kín cũng chẳng ồn ào, mình chỉ cởi mở khi gặp đúng người, 
+          đúng tần số. Khi đã tìm thấy sự kết nối, mình sẽ nói rất nhiều. 
+          Còn ở nơi không thuộc về, mình chọn quan sát để hiểu hơn là thể hiện.
+        </p>
+        <div class="pull-quote" style="margin:1.75rem 0;">
+          "Mình không chạy theo đám đông. 
+          Mình giữ cách nhìn riêng và luôn làm mọi việc 
+          theo hướng mà mình thấy hợp lý nhất."
+        </div>
+        <p class="body-serif">
+          Mình có thói quen <strong>nghĩ kỹ rồi mới làm</strong>. 
+          Không phải mình thiếu quyết đoán, mà vì mình muốn mọi thứ phải chỉn chu và tối ưu nhất. 
+          Mình chấp nhận đi chậm một chút, để khi nhìn lại, mình có thể tự hào nói rằng: <em>"mình đã làm rất tử tế."</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="padding: 0 3.5rem; margin-bottom: 7rem;">
+  <p class="label fade-up" style="margin-bottom:2rem;">Góc nhìn đa chiều</p>
+  <div class="contrast-pair fade-up d1">
+    
+    <div class="contrast-item light">
+      <p class="contrast-kicker">Bạn bè & Đồng nghiệp</p>
+      <p class="contrast-headline">"Khó tính trong công việc, nhưng ở cùng nhóm thì cực kỳ yên tâm."</p>
+      <p class="contrast-body">
+        Mọi người thường thấy ở mình sự quyết liệt và trách nhiệm. 
+        mình chủ động bám sát tiến độ, nhắc deadline và chau chuốt nội dung đến từng chi tiết nhỏ. 
+        Làm việc chung có thể áp lực, nhưng đổi lại là kết quả xứng đáng.
+      </p>
+      <div class="tag-row">
+        <span class="tag tag-warm">Cầu toàn</span>
+        <span class="tag tag-warm">Tỉ mỉ</span>
+        <span class="tag tag-warm">Đáng tin</span>
+        <span class="tag tag-warm">Trách nhiệm</span>
+      </div>
+    </div>
+
+    <div class="contrast-item dark">
+      <p class="contrast-kicker">Người lạ</p>
+      <p class="contrast-headline">"Hơi nhạt lúc đầu, nhưng lại rất dễ chịu và chân thành khi đã quen."</p>
+      <p class="contrast-body">
+        Mình thường không chủ động bắt chuyện nên đôi lúc tạo cảm giác hơi khó gần. 
+        Nhưng khi đã nói chuyện, mình chọn cách đối đãi nhẹ nhàng, hay cười và luôn sẵn sàng hỗ trợ. 
+        Cả hai mặt này đều là mình, chỉ là ở những bối cảnh khác nhau.
+      </p>
+      <div class="tag-row">
+        <span class="tag tag-ghost">Nhẹ nhàng</span>
+        <span class="tag tag-ghost">Chân thành</span>
+        <span class="tag tag-ghost">Dễ chịu</span>
+        <span class="tag tag-ghost">Ít nói</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- IMAGE BREAK ─────────────────────────────── -->
+<div style="padding: 0 3.5rem; margin-bottom: 7rem;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; border-radius:3px; overflow:hidden;">
+    <div class="img-wrap" style="height:360px;">
+      <img src="./assets/identity_work_.jpg" alt="Identity visual 1 — môi trường làm việc chỉn chu, bàn làm việc gọn gàng" width="760" height="720" >
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Sophisticated</p>
+        <p class="img-placeholder-size">Chỉn chu trong phong cách làm việc</p>
+      </div>
+    </div>
+    <div class="img-wrap" style="height:360px;">
+      <img src="./assets/identity_daily.jpg" alt="Identity visual 2 — sổ tay, ghi chú, hệ thống tổ chức" width="760" height="720" >
+      <div class="img-placeholder">
+        <p class="img-placeholder-label">Soft and Helpful</p>
+        <p class="img-placeholder-size">Hay cười, thích giúp đỡ mọi người</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 QUESTIONS ──────────────────────────────── -->
+<section class="section-sm" style="padding-top:0;">
+  <div class="container-sm">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">5 Câu hỏi đánh giá cá nhân</p>
+    <div class="acc-item">
+  <div class="acc-header" onclick="toggleAccordion(this)">
+    <div class="acc-left"><p class="acc-num">01</p><p class="acc-title"><strong>Tính cách mình thế nào?</strong></p></div>
+    <button class="acc-toggle">+</button>
+  </div>
+  <div class="acc-body"><div class="acc-content">
+    <p>Mình không phải kiểu người vồn vã ngay từ đầu. Mình nhẹ nhàng và có phần kín kẽ, nhưng không hẳn là hướng nội hoàn toàn. Mình gọi đó là <strong>hướng ngoại có chọn lọc</strong>: chỉ thực sự cởi mở khi gặp đúng người, đúng tần số. Còn lại, mình chọn quan sát nhiều hơn là thể hiện.</p>
+    <p>Đặc trưng của mình là <strong>suy nghĩ kỹ trước khi làm</strong>. Thay vì làm nhanh cho xong, mình luôn tự hỏi "cách này đã tối ưu chưa?". Điều này có thể khiến mình đi chậm hơn một chút, nhưng đổi lại là sự yên tâm tuyệt đối về kết quả.</p>
+    <p>Là một INFJ, mình có hệ giá trị riêng và không dễ bị cuốn theo số đông. Khi đã bắt tay vào việc, mình muốn mọi thứ phải vận hành theo cách mình thấy hợp lý và tử tế nhất.</p>
+  </div></div>
+</div>
+
+<div class="acc-item">
+  <div class="acc-header" onclick="toggleAccordion(this)">
+    <div class="acc-left"><p class="acc-num">02</p><p class="acc-title"><strong>Mọi người nhận xét gì về mình?</strong></p></div>
+    <button class="acc-toggle">+</button>
+  </div>
+  <div class="acc-body"><div class="acc-content">
+    <p>Với bạn bè và đồng nghiệp, mình là người <strong>cầu toàn, tỉ mỉ và đáng tin</strong>. Mọi người thường yên tâm khi có mình trong nhóm vì biết mình sẽ bám sát tiến độ, kiểm soát chất lượng và không bao giờ làm việc kiểu qua loa.</p>
+    <p>Với người mới gặp, mình có vẻ hơi "nhạt" và khó gần do ít khi chủ động bắt chuyện. Nhưng khi đã quen, mọi người sẽ thấy một khía cạnh khác: dễ chịu, hay cười và luôn sẵn lòng hỗ trợ.</p>
+    <p>Một điểm thú vị là <strong>người quen thấy mình khó tính, người lạ lại thấy mình hiền</strong>. Thực ra cả hai đều đúng, chỉ là mình bộc lộ tùy vào từng bối cảnh khác nhau.</p>
+  </div></div>
+</div>
+
+<div class="acc-item">
+  <div class="acc-header" onclick="toggleAccordion(this)">
+    <div class="acc-left"><p class="acc-num">03</p><p class="acc-title"><strong>Kỹ năng và năng lực nổi bật?</strong></p></div>
+    <button class="acc-toggle">+</button>
+  </div>
+  <div class="acc-body"><div class="acc-content">
+    <p>Thế mạnh của mình nằm ở <strong>khả năng tổ chức và hệ thống hóa</strong>. mình có thể biến những thông tin rời rạc thành một cấu trúc logic, dễ hiểu và truyền đạt lại cho người khác một cách đơn giản nhất.</p>
+    <p>Kỹ năng bổ trợ của mình gồm edit video (CapCut) và thiết kế (Canva). Dù không phải chuyên môn chính, mình vẫn có thể tạo ra những sản phẩm chỉn chu, đúng format và có tính thẩm mỹ ổn.</p>
+    <p>Thành tựu của mình đi theo hướng <strong>làm chắc và đi đường dài</strong>: học bổng đại học, chủ nhiệm CLB thời cấp 3 và Top 10 khởi nghiệp tại NEU. Đó là kết quả của sự kiên trì và nghiêm túc với mục tiêu.</p>
+  </div></div>
+</div>
+
+<div class="acc-item">
+  <div class="acc-header" onclick="toggleAccordion(this)">
+    <div class="acc-left"><p class="acc-num">04</p><p class="acc-title"><strong>Giá trị cốt lõi mình theo đuổi?</strong></p></div>
+    <button class="acc-toggle">+</button>
+  </div>
+  <div class="acc-body"><div class="acc-content">
+    <p>Điều mình quan tâm nhất là <strong>sự chỉn chu và quyền kiểm soát công việc</strong>. Mình ghét cảm giác mọi thứ bị lộn xộn hay làm cho xong chuyện. Khi hoàn thành bất cứ việc gì, mình phải thấy tự hào vì đã làm nó một cách tử tế.</p>
+    <p>Về lâu dài, mình muốn làm chủ một hệ thống công việc — nơi mình có thể sắp xếp, điều phối và đảm bảo mọi thứ vận hành trơn tru nhất.</p>
+    <p>Nguyên tắc đơn giản của mình là: <strong>Đã làm thì phải làm cho ra trò, không làm nửa vời.</strong></p>
+  </div></div>
+</div>
+
+<div class="acc-item">
+  <div class="acc-header" onclick="toggleAccordion(this)">
+    <div class="acc-left"><p class="acc-num">05</p><p class="acc-title"><strong>Đam mê thực sự của mình?</strong></p></div>
+    <button class="acc-toggle">+</button>
+  </div>
+  <div class="acc-body"><div class="acc-content">
+    <p>Đó là <strong>ẩm thực</strong>, nhưng dưới góc nhìn của một người thích phân tích. Mình yêu cảm giác chuẩn bị nguyên liệu, sắp xếp không gian và tối ưu từng bước nấu nướng để mọi thứ diễn ra trọn vẹn và logic nhất.</p>
+    <p>Khi ăn, mình có thói quen đánh giá chi tiết từ hương vị đến cách chế biến. Mình thích dành thời gian để cảm nhận và tìm hiểu xem một món ăn có thực sự đạt đến sự cân bằng hay không.</p>
+    <p>Thực ra, <strong>cách mình ăn uống phản ánh chính con người mình</strong>: luôn tò mò, thích phân tích và yêu cầu sự chỉn chu trong mọi trải nghiệm.</p>
+  </div></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">Năng lực hệ thống</p>
+    <div class="skills-grid fade-up d1">
+      <div class="skill-item">
+        <p class="skill-name"><strong>Hệ thống hóa nội dung</strong></p>
+        <p class="skill-desc">Khả năng đúc kết thông tin rời rạc thành cấu trúc logic và dễ hiểu. Đây là thế mạnh mình thường xuyên ứng dụng trong việc lên kế hoạch, giảng dạy và điều phối dự án nhóm.</p>
+      </div>
+      <div class="skill-item">
+        <p class="skill-name"><strong>Sản xuất nội dung đa kênh</strong></p>
+        <p class="skill-desc">Thành thạo các công cụ bổ trợ như CapCut, Canva để hiện thực hóa ý tưởng. Mình có kinh nghiệm xây dựng nội dung nhất quán và giữ vững màu sắc thương hiệu trên các nền tảng mạng xã hội.</p>
+      </div>
+      <div class="skill-item">
+        <p class="skill-name"><strong>Tối ưu quy trình & Thích nghi</strong></p>
+        <p class="skill-desc">Mình có khả năng nắm bắt nhanh các quy trình mới và tối ưu hóa sản phẩm theo tiêu chuẩn cao nhất. Đây là cơ sở để mình liên tục cải thiện kỹ năng quay dựng chuyên nghiệp trong thời gian tới.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="footer-logo">H. Personal Brand</span>
+  <span class="footer-copy">Chapter I · The Identity — Inner Compass · 2026</span>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

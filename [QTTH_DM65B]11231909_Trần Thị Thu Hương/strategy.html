@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch. III–IV — The Strategy · Target Audience & Positioning</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding: 9rem 0 5rem; background: var(--cream); border-bottom: 1px solid rgba(179,139,109,0.14); }
+
+/* TABLE */
+.premium-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.premium-table th { padding: 0.9rem 1.5rem; background: var(--charcoal); color: rgba(255,255,255,0.65); font-weight: 400; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; text-align: left; }
+.premium-table th:first-child { background: var(--dark); }
+.premium-table td { 
+  padding: 1.25rem 1.5rem; 
+  border-bottom: 1px solid rgba(179,139,109,0.1); 
+  vertical-align: top; 
+  color: var(--mid); 
+  line-height: 1.65; 
+  font-family: 'EB Garamond', serif; 
+  font-size: 0.96rem;
+  min-width: 120px; /* ← thêm dòng này */
+}.premium-table tr:last-child td { background: rgba(179,139,109,0.05); font-family: 'Jost', sans-serif; }
+.premium-table td:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--charcoal); }
+.premium-table tr:last-child td:first-child { color: var(--accent-deep); font-weight: 500; }
+.me-badge { display: inline-block; background: var(--accent); color: white; font-size: 0.58rem; letter-spacing: 0.1em; padding: 0.12rem 0.5rem; border-radius: 20px; vertical-align: middle; margin-left: 0.4rem; text-transform: uppercase; font-family: 'Jost', sans-serif; }
+
+/* GAP MAP */
+/* Tìm và thay toàn bộ các rule gap-map, gap-box, gap-label, gap-title, gap-body, gap-me */
+
+.gap-map {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(179,139,109,0.15);
+}
+.gap-box {
+  padding: 2.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gap-box.left {
+  background: var(--warm-white);
+  border-right: 1px solid rgba(179,139,109,0.12);
+}
+.gap-box.right {
+  background: var(--warm-white);
+  border-left: 1px solid rgba(179,139,109,0.12);
+}
+.gap-box.center {
+  background: var(--charcoal);
+  text-align: center;
+  padding: 2.75rem 2rem;
+}
+.gap-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.gap-box.left .gap-label,
+.gap-box.right .gap-label { color: var(--muted); }
+.gap-box.center .gap-label { color: var(--accent-light); }
+
+.gap-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.gap-box.left .gap-title,
+.gap-box.right .gap-title { color: var(--charcoal); }
+.gap-box.center .gap-title { color: var(--cream); }
+
+.gap-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+.gap-box.left .gap-body,
+.gap-box.right .gap-body { color: var(--mid); }
+.gap-box.center .gap-body { color: rgba(255,255,255,0.5); }
+
+.gap-me {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-top: 1.25rem;
+}
+
+/* AUDIENCE */
+.aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.aud-card { padding: 2.75rem 2.5rem; border: 1px solid rgba(179,139,109,0.14); border-radius: 3px; transition: transform .3s, box-shadow .3s; }
+.aud-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,40,37,0.07); }
+.aud-kicker { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.aud-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--charcoal); margin-bottom: 1rem; line-height: 1.35; }
+.aud-body { font-family: 'EB Garamond', serif; font-size: 1rem; color: var(--mid); line-height: 1.82; }
+.aud-body strong { color: var(--charcoal); font-weight: 500; }
+.needs-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.needs-list li { font-family: 'EB Garamond', serif; font-size: 0.94rem; color: var(--mid); line-height: 1.55; display: flex; gap: 0.65rem; }
+.needs-list li::before { content: '·'; color: var(--accent-bright); font-size: 1.2rem; flex-shrink: 0; margin-top: -0.1rem; }
+
+/* POSITIONING CANVAS */
+.pos-canvas {
+  position: relative; width: 100%; height: 400px;
+  border: 1px solid rgba(179,139,109,0.16); border-radius: 3px;
+  background: var(--cream); overflow: hidden;
+}
+.pos-axis-h { position: absolute; left: 6%; right: 6%; top: 50%; height: 1px; background: rgba(179,139,109,0.22); }
+.pos-axis-v { position: absolute; top: 6%; bottom: 6%; left: 50%; width: 1px; background: rgba(179,139,109,0.22); }
+.pos-axis-label { position: absolute; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.pos-dot { position: absolute; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+.pos-circle { border-radius: 50%; }
+.pos-name { font-size: 0.65rem; color: var(--mid); white-space: nowrap; text-align: center; }
+
+/* VALUE PROMISE */
+.vp-bar { background: var(--accent-deep); padding: 4.5rem 3.5rem; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
+.vp-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.45; }
+.vp-pillars { display: flex; gap: 3rem; }
+.vp-pill { text-align: center; }
+.vp-word { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; color: var(--cream); font-weight: 300; }
+.vp-def { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+</style>
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div><div class="page-veil"></div>
+<!-- ═══════════════════════════════════════════
+     MODAL WELCOME 
+     ═══════════════════════════════════════════ -->
+<style>
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 7000;
+  background: rgba(44,40,37,0.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; animation: overlayIn .5s ease .2s forwards;
+}
+@keyframes overlayIn { to { opacity: 1; } }
+
+.modal-box {
+  background: var(--warm-white);
+  border: 1px solid rgba(179,139,109,0.22);
+  border-radius: 4px;
+  width: 100%; max-width: 640px;
+  max-height: 88vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  transform: translateY(28px); opacity: 0;
+  animation: boxIn .55s cubic-bezier(.4,0,.2,1) .35s forwards;
+  box-shadow: 0 32px 80px rgba(44,40,37,0.22);
+}
+@keyframes boxIn { to { transform: translateY(0); opacity: 1; } }
+
+.modal-header {
+  padding: 2rem 2.5rem 1.25rem;
+  border-bottom: 1px solid rgba(179,139,109,0.12);
+  display: flex; align-items: flex-start; gap: 1.25rem;
+}
+.modal-avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  background: var(--beige); overflow: hidden;
+  border: 2px solid rgba(179,139,109,0.25);
+  position: relative;
+}
+.modal-avatar img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.modal-avatar-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--parchment); text-align: center; line-height: 1.4;
+  padding: 4px;
+}
+.modal-header-text {}
+.modal-kicker {
+  font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem; font-weight: 500;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; color: var(--charcoal);
+  line-height: 1.35;
+}
+
+.modal-body {
+  padding: 1.75rem 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+.modal-greeting {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.97rem; color: var(--mid); line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.modal-greeting strong { color: var(--charcoal); font-weight: 500; }
+
+.modal-divider {
+  width: 2.5rem; height: 1px;
+  background: var(--parchment); margin: 1.5rem 0;
+}
+
+.modal-map-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--charcoal);
+  margin-bottom: 1rem; letter-spacing: 0.04em;
+}
+
+.modal-map {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(179,139,109,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+.modal-map-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid rgba(179,139,109,0.1);
+  text-decoration: none;
+  transition: background .2s;
+}
+.modal-map-row:last-child { border: none; }
+.modal-map-row:hover { background: var(--cream); }
+.modal-map-left {
+  padding: 0.85rem 1rem;
+  background: rgba(179,139,109,0.05);
+  border-right: 1px solid rgba(179,139,109,0.1);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-chapter {
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+}
+.modal-map-page {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; color: var(--charcoal); margin-top: 0.15rem;
+}
+.modal-map-right {
+  padding: 0.85rem 1.1rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.modal-map-topic {
+  font-size: 0.78rem; color: var(--charcoal); font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+.modal-map-ref {
+  font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+.modal-closing {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem; color: var(--mid); line-height: 1.85;
+  margin-top: 1.25rem; font-style: italic;
+}
+
+.modal-footer {
+  padding: 1.25rem 2.5rem 1.75rem;
+  border-top: 1px solid rgba(179,139,109,0.12);
+  display: flex; justify-content: flex-end;
+}
+.modal-btn {
+  background: var(--charcoal); color: var(--cream);
+  border: none; border-radius: 30px;
+  padding: 0.75rem 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.modal-btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+</style>
+
+<div class="modal-overlay" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div class="modal-avatar">
+        <!-- Thay src="" bằng đường dẫn ảnh chân dung của em (100×100px, hình tròn) -->
+        <img src="./assets/welcome_card.png" alt="Thu Hương" width="100" height="100" onerror="this.style.display='none'">
+          </div>
+      <div class="modal-header-text">
+        <p class="modal-kicker">Lời chào từ tác giả</p>
+        <h2 class="modal-title" id="modalTitle">
+          Thu Hương — Hướng dẫn<br>trải nghiệm Website
+        </h2>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <p class="modal-greeting">
+        Em chào Thầy <strong>ThS. Hoàng Tuấn Dũng</strong> ạ,
+      </p>
+      <p class="modal-greeting">
+        Lời đầu tiên, em xin cảm ơn Thầy đã dành thời gian ghé thăm và xem qua sản phẩm
+        bài tập cá nhân: <strong>Xây dựng Thương hiệu cá nhân</strong> của em.
+      </p>
+      <p class="modal-greeting">
+        Để phù hợp với dòng chảy câu chuyện và phong cách trình bày của một website cá nhân
+        chuyên nghiệp, em đã sắp xếp lại các câu hỏi trong đề bài thành <strong>6 Chương (Chapter) logic.</strong>
+        Để Thầy thuận tiện hơn trong việc theo dõi và chấm điểm theo đúng lộ trình câu hỏi,
+        em xin phép gửi Thầy bản đồ hướng dẫn đối chiếu dưới đây:
+      </p>
+
+      <div class="modal-divider"></div>
+      <p class="modal-map-title">Bản đồ đối chiếu nội dung</p>
+
+      <div class="modal-map">
+        <a href="index.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Home</span>
+            <span class="modal-map-page">The Origin Story</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Tổng quan & Câu chuyện thương hiệu</span>
+            <span class="modal-map-ref">Câu VI.9</span>
+          </div>
+        </a>
+        <a href="identity.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter I</span>
+            <span class="modal-map-page">The Identity</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đánh giá cá nhân — Inner Compass</span>
+            <span class="modal-map-ref">Câu I.1 đến I.5</span>
+          </div>
+        </a>
+        <a href="vision.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter II</span>
+            <span class="modal-map-page">The Vision</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Mục tiêu thương hiệu — Strategic Goals</span>
+            <span class="modal-map-ref">Câu II.1 đến II.4</span>
+          </div>
+        </a>
+        <a href="strategy.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Ch. III & IV</span>
+            <span class="modal-map-page">The Strategy</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Đối tượng mục tiêu & Định vị thương hiệu</span>
+            <span class="modal-map-ref">Câu III.1–III.4 & IV.1–IV.4</span>
+          </div>
+        </a>
+        <a href="presence.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter V</span>
+            <span class="modal-map-page">The Presence</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Nhận diện & Hình ảnh thương hiệu</span>
+            <span class="modal-map-ref">Câu V.1 đến V.4</span>
+          </div>
+        </a>
+        <a href="roadmap.html" class="modal-map-row">
+          <div class="modal-map-left">
+            <span class="modal-map-chapter">Chapter VI</span>
+            <span class="modal-map-page">The Roadmap</span>
+          </div>
+          <div class="modal-map-right">
+            <span class="modal-map-topic">Phân tích năng lực & Lộ trình hành động</span>
+            <span class="modal-map-ref">Câu VI.1 đến VI.8</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="modal-closing">
+        Em hy vọng cách trình bày này sẽ mang lại cho Thầy một trải nghiệm mới mẻ
+        và thấy được sự đầu tư nghiêm túc của em đối với bộ môn Quản trị thương hiệu.
+        Em cảm ơn Thầy và chúc Thầy có một ngày làm việc hiệu quả ạ!
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal()" id="modalCloseBtn">
+        Đã hiểu — Khám phá ngay
+      </button>
+    </div>
+
+  </div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo"><em>H.</em> Personal Brand</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="identity.html">Identity</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="presence.html">Presence</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:3rem;">
+      <div>
+        <p class="label fade-up">Chapter III & IV · The Strategy</p>
+        <h1 class="display display-xl fade-up d2" style="margin-top:1.25rem;">Target Audience<br>&amp; <em>Positioning</em></h1>
+      </div>
+      <p class="body-serif fade-up d2" style="max-width:280px; text-align:right;">Đối tượng mục tiêu &amp; Định vị thương hiệu</p>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>Giải mã trải nghiệm</span><span class="sep">·</span>
+    <span>Điểm tựa niềm tin</span><span class="sep">·</span>
+    <span>Ưu tiên sự thật</span><span class="sep">·</span>
+    <span>Định vị thị trường</span><span class="sep">·</span>
+    <span>Lấp đầy khoảng trống</span><span class="sep">·</span>
+    <span>Minh bạch thông tin</span><span class="sep">·</span>
+    
+    <span>Giải mã trải nghiệm</span><span class="sep">·</span>
+    <span>Điểm tựa niềm tin</span><span class="sep">·</span>
+    <span>Ưu tiên sự thật</span><span class="sep">·</span>
+    <span>Định vị thị trường</span><span class="sep">·</span>
+    <span>Lấp đầy khoảng trống</span><span class="sep">·</span>
+    <span>Minh bạch thông tin</span><span class="sep">·</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+<p class="label fade-up">Phân tích thị trường</p>
+<h2 class="display display-md fade-up d1" style="margin: 0.75rem 0 2.5rem;">So sánh các nhóm<br><em>Food Reviewer</em></h2>
+
+<style>
+/* ── COMPETITOR CARDS ─────────────────────── */
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  align-items: stretch;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.comp-card {
+  border: 1px solid rgba(179,139,109,0.16);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--warm-white);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.comp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(44,40,37,0.08);
+}
+.comp-card-header {
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(179,139,109,0.1);
+  background: var(--cream);
+}
+.comp-card-type {
+  font-size: 0.58rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--accent);
+  font-weight: 500; margin-bottom: 0.35rem;
+}
+.comp-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-weight: 400; color: var(--charcoal);
+  line-height: 1.3;
+}
+.comp-card-accounts {
+  margin-top: 0.6rem;
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.comp-card-account {
+  font-size: 0.72rem; color: var(--accent-deep);
+  letter-spacing: 0.02em;
+}
+.comp-card-account span {
+  color: var(--muted); font-size: 0.68rem; margin-left: 0.35rem;
+}
+.comp-card-body {
+  padding: 1.25rem 1.5rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.comp-row-label {
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.3rem;
+}
+.comp-row-value {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.94rem; color: var(--mid); line-height: 1.65;
+}
+.comp-tag-row {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem;
+}
+.comp-tag {
+  font-size: 0.62rem; letter-spacing: 0.06em;
+  padding: 0.22rem 0.65rem; border-radius: 20px;
+}
+.comp-tag-green {
+  background: rgba(74,107,78,0.1); color: #4A6B4E;
+}
+.comp-tag-red {
+  background: rgba(139,69,53,0.1); color: #8B4535;
+}
+.comp-tag-gold {
+  background: rgba(179,139,109,0.12); color: var(--accent-deep);
+}
+.comp-card-footer {
+  padding: 1rem 1.5rem;
+  background: rgba(179,139,109,0.05);
+  border-top: 1px solid rgba(179,139,109,0.1);
+}
+.comp-footer-label {
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.3rem;
+}
+.comp-footer-value {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem; color: var(--charcoal);
+  font-style: italic; line-height: 1.6;
+}
+
+/* ── MY POSITION CARD ─────────────────────── */
+.my-card {
+  border: 2px solid var(--accent);
+  border-radius: 4px; overflow: hidden;
+  background: var(--charcoal);
+  position: relative;
+}
+.my-card::before {
+  content: 'VỊ TRÍ CỦA TÔI';
+  position: absolute; top: 1.1rem; right: 1.25rem;
+  font-size: 0.52rem; letter-spacing: 0.28em;
+  color: var(--accent-light); opacity: 0.7;
+}
+.my-card-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.my-col {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.my-col:last-child { border: none; }
+.my-col-label {
+  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent-light); margin-bottom: 0.6rem;
+}
+.my-col-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; color: var(--cream);
+  margin-bottom: 0.65rem; line-height: 1.35;
+}
+.my-col-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.88rem; color: rgba(255,255,255,0.5);
+  line-height: 1.72;
+}
+</style>
+
+<!-- 3 COMPETITOR CARDS -->
+<div class="comp-grid fade-up d2">
+
+  <!-- Card 1 -->
+  <div class="comp-card">
+  <div class="comp-card-header">
+    <p class="comp-card-type">Nhóm 01 · Giải trí / Trending</p>
+    <p class="comp-card-title">Nội dung ngắn,<br>hợp thời</p>
+    <div class="comp-card-accounts">
+      <p class="comp-card-account">@ansaphanoi <span>1.6M theo dõi</span></p>
+      <p class="comp-card-account">@tieumanthaune <span>3.3M theo dõi</span></p>
+    </div>
+  </div>
+  <div class="comp-card-body">
+    <div>
+      <p class="comp-row-label">Cách kể chuyện</p>
+      <p class="comp-row-value">Chuyến đi ăn uống vui nhộn, trò chuyện gần gũi, phim ngắn gọn bắt nhịp xu hướng</p>
+    </div>
+    <div>
+      <p class="comp-row-label">Điểm mạnh</p>
+      <div class="comp-tag-row">
+        <span class="comp-tag comp-tag-green">Lan tỏa rộng</span>
+        <span class="comp-tag comp-tag-green">Hợp gu người trẻ</span>
+        <span class="comp-tag comp-tag-green">Dễ xem</span>
+      </div>
+    </div>
+    <div>
+      <p class="comp-row-label">Điểm yếu</p>
+      <div class="comp-tag-row">
+        <span class="comp-tag comp-tag-red">Thiếu chi tiết giá</span>
+        <span class="comp-tag comp-tag-red">Chủ yếu là cảm xúc</span>
+      </div>
+    </div>
+  </div>
+  <div class="comp-card-footer">
+    <p class="comp-footer-label">Cơ hội của mình</p>
+    <p class="comp-footer-value">Bổ sung cách tính toán chi phí và gợi ý gọi món sao cho xứng đáng nhất</p>
+  </div>
+</div>
+
+<div class="comp-card">
+  <div class="comp-card-header">
+    <p class="comp-card-type">Nhóm 02 · Cá nhân / Cảm nhận</p>
+    <p class="comp-card-title">Chia sẻ cảm nhận<br>cá nhân</p>
+    <div class="comp-card-accounts">
+      <p class="comp-card-account">@hanoiangi <span>1M theo dõi</span></p>
+      <p class="comp-card-account">@anchoidieunghe <span>582K theo dõi</span></p>
+    </div>
+  </div>
+  <div class="comp-card-body">
+    <div>
+      <p class="comp-row-label">Cách kể chuyện</p>
+      <p class="comp-row-value">Đánh giá thật thà, hóm hỉnh, gắn liền với nhịp sống và du lịch Hà Nội</p>
+    </div>
+    <div>
+      <p class="comp-row-label">Điểm mạnh</p>
+      <div class="comp-tag-row">
+        <span class="comp-tag comp-tag-green">Dễ gần</span>
+        <span class="comp-tag comp-tag-green">Tin cậy từ con người</span>
+      </div>
+    </div>
+    <div>
+      <p class="comp-row-label">Điểm yếu</p>
+      <div class="comp-tag-row">
+        <span class="comp-tag comp-tag-red">Dừng lại ở mức ngon dở</span>
+        <span class="comp-tag comp-tag-red">Chưa đi sâu vào giá trị</span>
+      </div>
+    </div>
+  </div>
+  <div class="comp-card-footer">
+    <p class="comp-footer-label">Cơ hội của mình</p>
+    <p class="comp-footer-value">Đưa ra các tiêu chí rõ ràng như hương vị và độ xứng đáng bằng giọng kể nhẹ nhàng</p>
+  </div>
+</div>
+
+<div class="comp-card">
+  <div class="comp-card-header">
+    <p class="comp-card-type">Nhóm 03 · Chuyên sâu / Fine Dining</p>
+    <p class="comp-card-title">Kiến thức ẩm thực,<br>sang trọng</p>
+    <div class="comp-card-accounts">
+      <p class="comp-card-account">@nhandian <span>500K+ theo dõi</span></p>
+      <p class="comp-card-account">@angithuongoi <span>498K theo dõi</span></p>
+    </div>
+  </div>
+  <div class="comp-card-body">
+    <div>
+      <p class="comp-row-label">Cách kể chuyện</p>
+      <p class="comp-row-value">Tìm hiểu kỹ về nguyên liệu và cung cách phục vụ tại các điểm đến đắt đỏ</p>
+    </div>
+    <div>
+      <p class="comp-row-label">Điểm mạnh</p>
+      <div class="comp-tag-row">
+        <span class="comp-tag comp-tag-green">Kiến thức chắc</span>
+        <span class="comp-tag comp-tag-green">Hợp tác lớn</span>
+      </div>
+    </div>
+    <div>
+      <p class="comp-row-label">Điểm yếu</p>
+      <div class="comp-tag-row">
+        <span class="comp-tag comp-tag-red">Quá xa hoa</span>
+        <span class="comp-tag comp-tag-red">Kín tiếng về chi phí</span>
+      </div>
+    </div>
+  </div>
+  <div class="comp-card-footer">
+    <p class="comp-footer-label">Cơ hội của mình</p>
+    <p class="comp-footer-value">Giúp mọi người hiểu rõ giá trị thực sự của các điểm đến sang trọng một cách dễ dàng nhất</p>
+  </div>
+</div>
+  
+
+</div>
+
+<!-- MY POSITION CARD -->
+<div class="my-card fade-up d3">
+  <div class="my-card-inner">
+    <div class="my-col">
+      <p class="my-col-label">Định vị của tôi</p>
+      <p class="my-col-title">Giải mã trải nghiệm tầm trung–cao cấp</p>
+      <p class="my-col-body">Không thiên về giải trí. Không chỉ cảm nhận. Không quá chuyên gia xa vời. Tôi đứng ở khoảng trống giữa.</p>
+    </div>
+    <div class="my-col">
+      <p class="my-col-label">Điểm khác biệt</p>
+      <p class="my-col-title">Cụ thể · Đáng tin · Dễ áp dụng</p>
+      <p class="my-col-body">Mỗi video đều trả lời được: nên gọi gì, chi bao nhiêu, và có xứng đáng quay lại không.</p>
+    </div>
+    <div class="my-col">
+      <p class="my-col-label">Nền tảng</p>
+      <p class="my-col-title">TikTok · Đang xây dựng</p>
+      <p class="my-col-body">Bước đầu tập trung vào chất lượng thông tin và sự nhất quán — uy tín tích lũy theo thời gian.</p>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2rem;">Khoảng trống thị trường</p>
+    <h2 class="display display-md fade-up d1" style="margin-bottom:2.5rem;">Mình đứng ở đâu?</h2>
+    <div class="gap-map fade-up d2">
+      <div class="gap-box left">
+        <p class="gap-label">Nhóm 1</p>
+        <p class="gap-title">Vui vẻ & Cảm xúc</p>
+        <p class="gap-body">Khơi gợi mong muốn đi thử ngay lúc đó, nhưng chưa giúp người xem đưa ra lựa chọn thực tế vì thiếu những thước đo cụ thể.</p>
+      </div>
+      <div class="gap-box center">
+        <p class="gap-label">Khoảng trống</p>
+        <p class="gap-title">Vị trí<br>của mình</p>
+        <p class="gap-body">Đem đến những trải nghiệm chất lượng kèm lời giải thích rõ ràng, giúp bạn hiểu đúng và biết nên làm gì ngay.</p>
+        <p class="gap-me">← Tìm về giá trị thật →</p>
+      </div>
+      <div class="gap-box right">
+        <p class="gap-label">Nhóm 3</p>
+        <p class="gap-title">Chuyên gia & Sang trọng</p>
+        <p class="gap-body">Kiến thức rất sâu và kỹ, nhưng đôi khi cách kể lại hơi xa lạ với những nhu cầu thường ngày của mọi người.</p>
+      </div>
+    </div>
+    <p class="body-serif fade-up d3" style="text-align:center; margin-top:2rem; font-style:italic; max-width:680px; margin-left:auto; margin-right:auto;">
+      "Mình chọn làm người kể lại những trải nghiệm đắt giá bằng ngôn ngữ dễ hiểu, giúp bạn gỡ bỏ những băn khoăn để luôn <strong>vững tâm lựa chọn</strong>."
+    </p>
+  </div>
+</section>
+
+<!-- TARGET AUDIENCE ───────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">Target Audience · Đối tượng mục tiêu</p>
+
+    <style>
+    .aud-v2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(179,139,109,0.18);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .aud-v2-card {
+      padding: 3rem 3rem;
+      position: relative;
+    }
+    .aud-v2-card:first-child {
+      border-right: 1px solid rgba(179,139,109,0.14);
+      background: var(--warm-white);
+    }
+    .aud-v2-card:last-child {
+      background: var(--charcoal);
+    }
+    .aud-v2-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 300; line-height: 1;
+      color: var(--beige);
+      margin-bottom: 0.25rem;
+    }
+    .aud-v2-card:last-child .aud-v2-num {
+      color: rgba(255,255,255,0.07);
+    }
+    .aud-v2-kicker {
+      font-size: 0.65rem; letter-spacing: 0.28em;
+      text-transform: uppercase; font-weight: 500;
+      margin-bottom: 0.65rem;
+    }
+    .aud-v2-card:first-child .aud-v2-kicker { color: var(--accent); }
+    .aud-v2-card:last-child  .aud-v2-kicker { color: var(--accent-light); }
+    .aud-v2-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 400; line-height: 1.35;
+      margin-bottom: 1.25rem;
+    }
+    .aud-v2-card:first-child .aud-v2-title { color: var(--charcoal); }
+    .aud-v2-card:last-child  .aud-v2-title { color: var(--cream); }
+    .aud-v2-body {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem; line-height: 1.85;
+      margin-bottom: 1.75rem;
+    }
+    .aud-v2-card:first-child .aud-v2-body { color: var(--mid); }
+    .aud-v2-card:last-child  .aud-v2-body { color: rgba(255,255,255,0.5); }
+    .aud-v2-card:first-child .aud-v2-body strong { color: var(--charcoal); font-weight: 500; }
+    .aud-v2-card:last-child  .aud-v2-body strong { color: var(--cream); font-weight: 500; }
+    .aud-v2-needs {
+      list-style: none;
+      display: flex; flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(179,139,109,0.14);
+      padding-top: 1.5rem;
+    }
+    .aud-v2-card:last-child .aud-v2-needs {
+      border-color: rgba(255,255,255,0.07);
+    }
+    .aud-v2-need {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(179,139,109,0.08);
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem; line-height: 1.65;
+    }
+    .aud-v2-card:last-child .aud-v2-need {
+      border-color: rgba(255,255,255,0.05);
+    }
+    .aud-v2-need:last-child { border: none; padding-bottom: 0; }
+    .aud-v2-need-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 0.55rem;
+    }
+    .aud-v2-card:first-child .aud-v2-need-dot { background: var(--accent); }
+    .aud-v2-card:last-child  .aud-v2-need-dot { background: var(--accent-light); }
+    .aud-v2-card:first-child .aud-v2-need { color: var(--mid); }
+    .aud-v2-card:last-child  .aud-v2-need { color: rgba(255,255,255,0.5); }
+    </style>
+
+    <div class="aud-v2 fade-up d1">
+
+      <!-- Card trái -->
+      <div class="aud-v2-card">
+        <p class="aud-v2-num">01</p>
+        <p class="aud-v2-kicker">Chân dung người xem</p>
+        <p class="aud-v2-title">Những cặp đôi trẻ khao khát trải nghiệm sự tinh tế</p>
+        <p class="aud-v2-body">
+          Họ là những người trẻ tại Hà Nội có thu nhập ổn định, muốn dành tặng nhau những bữa ăn sang trọng trong các dịp đặc biệt. Tuy nhiên, họ luôn mang theo nỗi lo <strong>chi tiêu không xứng đáng</strong> hoặc lúng túng khi đặt bàn vì thiếu thông tin thực tế.
+        </p>
+        <ul class="aud-v2-needs">
+          <li class="aud-v2-need">
+            <span class="aud-v2-need-dot"></span>
+            Cần những gợi ý món ăn vừa vặn, đủ đầy cho hai người
+          </li>
+          <li class="aud-v2-need">
+            <span class="aud-v2-need-dot"></span>
+            Muốn biết chính xác mức chi thực tế tính trên mỗi đầu người
+          </li>
+          <li class="aud-v2-need">
+            <span class="aud-v2-need-dot"></span>
+            Tìm kiếm sự chắc chắn để mỗi kỷ niệm đều diễn ra hoàn hảo
+          </li>
+        </ul>
+      </div>
+
+      <!-- Card phải -->
+      <div class="aud-v2-card">
+        <p class="aud-v2-num">02</p>
+        <p class="aud-v2-kicker">Thấu hiểu người xem</p>
+        <p class="aud-v2-title">Trải nghiệm bằng cảm xúc, quyết định bằng lý trí</p>
+        <p class="aud-v2-body">
+          Người xem của mình không tìm nội dung để xem cho vui. Họ cần một <strong>kế hoạch có thể làm theo ngay</strong>. Họ ưu tiên những thông tin minh bạch, rõ ràng hơn là những hình ảnh lung linh nhưng mơ hồ về giá trị nhận lại.
+        </p>
+        <ul class="aud-v2-needs">
+          <li class="aud-v2-need">
+            <span class="aud-v2-need-dot"></span>
+            Muốn tìm thấy những thước phim có giá trị ứng dụng cao
+          </li>
+          <li class="aud-v2-need">
+            <span class="aud-v2-need-dot"></span>
+            Coi mình như một người tư vấn riêng về chuyện hẹn hò, ăn uống
+          </li>
+          <li class="aud-v2-need">
+            <span class="aud-v2-need-dot"></span>
+            Tin tưởng vào những đánh giá thẳng thắn về độ xứng đáng
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONING MAP ───────────────────────────── -->
+<section class="section-alt">
+  <div class="container">
+    <p class="label fade-up" style="margin-bottom:2.5rem;">Positioning Map · Bản đồ định vị</p>
+
+    <style>
+    .pos-canvas-v2 {
+      position: relative;
+      width: 100%; height: 520px;
+      background: var(--warm-white);
+      border: 1px solid rgba(179,139,109,0.16);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* Trục */
+    .ax-h {
+      position: absolute; left: 5%; right: 5%; top: 50%;
+      height: 1px; background: rgba(179,139,109,0.25);
+    }
+    .ax-v {
+      position: absolute; top: 5%; bottom: 5%; left: 50%;
+      width: 1px; background: rgba(179,139,109,0.25);
+    }
+    /* Mũi tên trục */
+    .ax-h::before, .ax-h::after,
+    .ax-v::before, .ax-v::after {
+      content: '';
+      position: absolute;
+      border: 5px solid transparent;
+    }
+    .ax-h::after  { right: -1px; top: -5px; border-left-color: rgba(179,139,109,0.4); }
+    .ax-h::before { left: -1px;  top: -5px; border-right-color: rgba(179,139,109,0.4); }
+    .ax-v::before { top: -1px;   left: -5px; border-bottom-color: rgba(179,139,109,0.4); }
+    .ax-v::after  { bottom: -1px; left: -5px; border-top-color: rgba(179,139,109,0.4); }
+
+    /* Label trục */
+    .ax-label {
+      position: absolute;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 500;
+      color: var(--muted);
+      background: var(--warm-white);
+      padding: 0.25rem 0.65rem;
+      border: 1px solid rgba(179,139,109,0.15);
+      border-radius: 20px;
+    }
+
+    /* Dot chung */
+    .pdot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.5rem;
+      cursor: default;
+    }
+    .pdot-circle {
+      border-radius: 50%;
+      transition: transform .25s ease;
+    }
+    .pdot:hover .pdot-circle { transform: scale(1.2); }
+    .pdot-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem; font-weight: 400;
+      color: var(--mid); text-align: center;
+      white-space: nowrap;
+      background: rgba(250,250,246,0.9);
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+    }
+
+    /* Dot "Tôi" */
+    .pdot-me .pdot-circle {
+      background: var(--accent-bright);
+      box-shadow: 0 0 0 8px rgba(196,122,69,0.15),
+                  0 0 0 16px rgba(196,122,69,0.06);
+    }
+    .pdot-me .pdot-label {
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--accent-deep);
+      background: rgba(250,250,246,0.95);
+      border: 1px solid rgba(196,122,69,0.25);
+      padding: 0.3rem 0.85rem;
+    }
+
+    /* Tooltip khi hover */
+    .pdot-tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%; transform: translateX(-50%);
+      background: var(--charcoal); color: var(--cream);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem; line-height: 1.55;
+      padding: 0.65rem 1rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 10;
+    }
+    .pdot-tooltip::after {
+      content: '';
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--charcoal);
+    }
+    .pdot:hover .pdot-tooltip { opacity: 1; }
+
+    /* Vùng nền 4 góc */
+    .pos-zone {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem; font-style: italic;
+      color: rgba(179,139,109,0.28);
+      letter-spacing: 0.06em;
+    }
+    </style>
+
+    <div class="pos-canvas-v2 fade-up d1">
+      <!-- Trục -->
+      <div class="ax-h"></div>
+      <div class="ax-v"></div>
+
+      <!-- Label trục -->
+      <span class="ax-label" style="top:50%; left:1.5%; transform:translateY(-50%);">Cảm xúc</span>
+      <span class="ax-label" style="top:50%; right:1.5%; transform:translateY(-50%);">Logic & Thực tế</span>
+      <span class="ax-label" style="top:2%; left:50%; transform:translateX(-50%);">Cao cấp & Sang trọng</span>
+      <span class="ax-label" style="bottom:2%; left:50%; transform:translateX(-50%);">Đại chúng & Bình dân</span>
+
+      <!-- Nhãn góc -->
+      <span class="pos-zone" style="top:6%; left:4%;">Sang trọng · Cảm xúc</span>
+      <span class="pos-zone" style="top:6%; right:4%; text-align:right;">Sang trọng · Có chiều sâu</span>
+      <span class="pos-zone" style="bottom:6%; left:4%;">Đại chúng · Vui vẻ</span>
+      <span class="pos-zone" style="bottom:6%; right:4%; text-align:right;">Đại chúng · Thực dụng</span>
+
+      <!-- Dot 1: Giải trí -->
+      <div class="pdot" style="left:22%; top:42%;">
+        <div class="pdot-tooltip">Giải trí / Trending<br><span style="opacity:.6; font-size:0.78rem;">@ansaphanoi · @tieumanthaune</span></div>
+        <div class="pdot-circle" style="width:18px; height:18px; background:var(--sand);"></div>
+        <span class="pdot-label">Giải trí / Trending</span>
+      </div>
+
+      <!-- Dot 2: Cá nhân -->
+      <div class="pdot" style="left:30%; top:64%;">
+        <div class="pdot-tooltip">Cá nhân / Cảm nhận<br><span style="opacity:.6; font-size:0.78rem;">@hanoiangi · @anchoidieunghe</span></div>
+        <div class="pdot-circle" style="width:16px; height:16px; background:var(--parchment);"></div>
+        <span class="pdot-label">Cá nhân / Cảm nhận</span>
+      </div>
+
+      <!-- Dot 3: Chuyên sâu -->
+      <div class="pdot" style="left:80%; top:18%;">
+        <div class="pdot-tooltip">Chuyên sâu / Fine Dining<br><span style="opacity:.6; font-size:0.78rem;">@nhandian · @angithuongoi</span></div>
+        <div class="pdot-circle" style="width:16px; height:16px; background:var(--parchment);"></div>
+        <span class="pdot-label">Chuyên sâu / Fine Dining</span>
+      </div>
+
+      <!-- Dot "Tôi" -->
+      <div class="pdot pdot-me" style="left:72%; top:36%;">
+        <div class="pdot-tooltip">Định vị mục tiêu của tôi<br><span style="opacity:.6; font-size:0.78rem;">Logic · Tầm trung–Cao cấp · Dễ áp dụng</span></div>
+        <div class="pdot-circle" style="width:28px; height:28px;"></div>
+        <span class="pdot-label">Định vị của tôi</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALUE PROMISE ──────────────────────────────── -->
+<style>
+.vp-v2 {
+  background: var(--charcoal);
+  padding: 5rem 3.5rem;
+}
+.vp-v2-top {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem;
+}
+.vp-v2-kicker {
+  font-size: 0.62rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--accent-light);
+  margin-bottom: 1.25rem; font-weight: 500;
+}
+.vp-v2-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.0vw, 2.6rem);
+  font-style: italic; font-weight: 300;
+  color: var(--cream); line-height: 1.5;
+}
+.vp-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.vp-v2-item {
+  padding: 2.5rem 2.75rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+  transition: background .25s;
+}
+.vp-v2-item:last-child { border: none; }
+.vp-v2-item:hover { background: rgba(255,255,255,0.03); }
+.vp-v2-item::before {
+  content: attr(data-n);
+  position: absolute; top: 2rem; right: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 300;
+  color: rgba(255,255,255,0.04); line-height: 1;
+}
+.vp-v2-word {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300;
+  color: var(--cream); line-height: 1;
+  margin-bottom: 0.65rem;
+}
+.vp-v2-rule {
+  width: 2rem; height: 1px;
+  background: var(--accent-light);
+  margin-bottom: 0.85rem;
+  opacity: 0.5;
+}
+.vp-v2-def {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem; color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+</style>
+
+<div class="vp-v2">
+  <div class="vp-v2-top fade-up">
+    <p class="vp-v2-kicker">Cam kết giá trị · Value Promise</p>
+    <p class="vp-v2-quote">"Xem xong là hiểu rõ, gỡ bỏ băn khoăn để vững tâm lựa chọn."</p>
+  </div>
+  <div class="vp-v2-grid fade-up d1">
+    <div class="vp-v2-item" data-n="01">
+      <p class="vp-v2-word">Cụ thể</p>
+      <div class="vp-v2-rule"></div>
+      <p class="vp-v2-def">Rõ ràng trong từng chi tiết — từ giá cả, cách gọi món đến cảm nhận tổng thể. Không nói chung chung.</p>
+    </div>
+    <div class="vp-v2-item" data-n="02">
+      <p class="vp-v2-word">Đáng tin</p>
+      <div class="vp-v2-rule"></div>
+      <p class="vp-v2-def">Thật thà và trước sau như một — đánh giá dựa trên tiêu chí nhất quán, không thay đổi theo cảm hứng.</p>
+    </div>
+    <div class="vp-v2-item" data-n="03">
+      <p class="vp-v2-word">Thực tế</p>
+      <div class="vp-v2-rule"></div>
+      <p class="vp-v2-def">Có thể làm theo được ngay — xem xong là biết mình nên đi hay không, và nếu đi thì làm gì.</p>
+    </div>
+  </div>
+</div>
+
+<footer><span class="footer-logo">H. Personal Brand</span><span class="footer-copy">Chapter III–IV · The Strategy — Target Audience & Positioning · 2026</span></footer>
+<script src="script.js"></script>
+</body>
+</html>
